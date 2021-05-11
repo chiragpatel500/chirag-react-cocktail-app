@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
               {/* <li>{drinks.strDrink}</li>
               <li>{drinks.strDrinkThumb}</li> */}
                <List className={classes.root}>
-                 <ListItem alignItems="flex-start">
+                 <ListItem alignItems="flex-end">
                    <ListItemAvatar>
                    <Avatar
                       alt="Remy Sharp"
