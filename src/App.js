@@ -4,11 +4,13 @@ import ListScreen from './components/ListScreen';
 import SearchPage from './components/SearchPage';
 import Register from './components/Register';
 import Login from './components/Login';
-import Details from './components/Details'
+import Details from './components/Details';
+import NavBar from './components/NavBar';
 
 function App() {
   return (
     <div className="App">
+      <NavBar/>
       <SearchPage />
       <ListScreen />
       <Details/>
