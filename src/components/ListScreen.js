@@ -155,10 +155,10 @@ export default function AlignItemsList() {
   );
 }
 
-// listscreen
-// www.thecocktaildb.com/api/json/v1/1/search.php?
-// Main screen shows name =    "strDrink": "Margarita",,
-// Main shows thumbnail  = "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg",
+listscreen
+www.thecocktaildb.com/api/json/v1/1/search.php?
+Main screen shows name =    "strDrink": "Margarita",,
+Main shows thumbnail  = "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg",
 
 // Deatails
 // deatils 1 shows name = "strDrink": "Margarita",
