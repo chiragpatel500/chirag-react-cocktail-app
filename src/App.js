@@ -4,14 +4,17 @@ import ListScreen from './components/ListScreen';
 import SearchPage from './components/SearchPage';
 import Register from './components/Register';
 import Login from './components/Login';
+import Details from './components/Details'
 
 function App() {
   return (
     <div className="App">
       <SearchPage />
       <ListScreen />
-      <Register />
-      <Login/>
+      <Details/>
+      <Register/>
+      <Login />
+      
     </div>
   );
 }

@@ -65,7 +65,8 @@ function Details() {
       />
       <CardMedia
         className={classes.media}
-        image="/static/images/cards/paella.jpg"
+        image ="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/202984001"
+        // src={drinks.strDrinkThumb} 
         title="Paella dish"
       />
       <CardContent>
