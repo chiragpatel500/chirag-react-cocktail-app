@@ -8,4 +8,4 @@ const ChatRoom = () => {
     )
 }
 
-export default ChatRoom
+export default ChatRoom;
