@@ -15,6 +15,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,6 +49,7 @@ function Details() {
   };
 
   return (
+    <Box display="flex" flexDirection="column" alignItems="center">
     <Card className={classes.root}>
       <CardHeader
         avatar={
@@ -121,6 +123,7 @@ function Details() {
         </CardContent>
       </Collapse>
     </Card>
+  </Box>
   );
 }
 

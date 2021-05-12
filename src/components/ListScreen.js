@@ -7,12 +7,13 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
+import Box from '@material-ui/core/Box';
+
 
 
 const ListScreen = () => {
-    const [drinks, setdrink] = useState("");
-    
-
+  const [drinks, setdrink] = useState("");
+  
   const fetchApi = () => {
     const url = "https://cab-cors-anywhere.herokuapp.com/https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita";
     fetch(url, {
@@ -45,21 +46,23 @@ const useStyles = makeStyles((theme) => ({
     },
     inline: {
       display: "inline"
+  },
+    flexcenter: {
+      display: "flex",
+      flexDirection:"column",
+      alignItems: "center",
     }
   }));
 
   const classes = useStyles();
     
   return (
-    <div>
+    <Box display="flex" flexDirection="column" alignItems="center">
       {drinks.length !== 0 ? (
         drinks.map((drinks) => {
           return (
-             <div>
-              {/* <li>{drinks.strDrink}</li>
-              <li>{drinks.strDrinkThumb}</li> */}
                <List className={classes.root}>
-                 <ListItem alignItems="flex-end">
+                 <ListItem>
                    <ListItemAvatar>
                    <Avatar
                       alt="Remy Sharp"
@@ -87,14 +90,12 @@ const useStyles = makeStyles((theme) => ({
                 </ListItem>
                 <Divider variant="inset" component="li" />
               </List>
-            </div>
-          
           );
         })
       ) : (
         <p>Searching For you</p>
       )}
-    </div>
+    </Box>
   );
 };
 

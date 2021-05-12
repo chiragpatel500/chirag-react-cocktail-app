@@ -6,6 +6,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexWrap: 'nowrap',
+    justifyContent:"center",
     
   },
   textField: {
