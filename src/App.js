@@ -12,11 +12,11 @@ function App() {
     <div className="App">
       <NavBar/>
       <SearchPage />
-      <ListScreen />
+      {/* <ListScreen />
       <Details/>
       <Register/>
       <Login />
-      
+       */}
     </div>
   );
 }
