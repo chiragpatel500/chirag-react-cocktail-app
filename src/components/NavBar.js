@@ -7,14 +7,15 @@ import Button from '@material-ui/core/Button';
 import Login from './Login';
 import SearchPage from './SearchPage';
 import ChatRoom from './ChatRoom';
-import { BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    backgroundColor:"violet",
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(1),
   },
   title: {
     flexGrow: 1,
@@ -28,16 +29,15 @@ function NavBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <link to="/Login">
-            <Button color="inherit">Login</Button>
-          </link>
-          <link to="/SearchPage">
-          <Typography variant="h6" className={classes.title}>
-            CockTails 
+          <Button color="inherit">
+            <Link to="/Login">Login</Link>
+          </Button>
+            <Typography variant="h6" className={classes.title}>
+                <Link to="/SearchPage">CockTails</Link>
           </Typography>
-          </link>
-          <link to="/ChatRoom"><Button color="inherit">Chat</Button>
-          </link>
+          <Button color="inherit">
+            <Link to="/ChatRoom">Chat</Link>
+          </Button>
         </Toolbar>
       </AppBar>
     </div>
