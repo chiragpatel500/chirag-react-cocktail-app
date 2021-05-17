@@ -12,7 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
+
 
 function Copyright() {
   return (
@@ -58,7 +58,7 @@ function Register() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign up
+          Register
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
@@ -122,11 +122,11 @@ function Register() {
             color="primary"
             className={classes.submit}
           >
-            Sign Up
+            Register
           </Button>
-          <Grid container justify="flex-end">
+          <Grid container justify="center">
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/Login" variant="body2">
                 Already have an account? Log in
               </Link>
             </Grid>

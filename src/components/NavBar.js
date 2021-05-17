@@ -8,15 +8,17 @@ import Login from './Login';
 import SearchPage from './SearchPage';
 import ChatRoom from './ChatRoom';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import ChatIcon from '@material-ui/icons/Chat';
+import { Icon } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor:"violet",
+   
   },
-  menuButton: {
-    marginRight: theme.spacing(1),
-  },
+  // menuButton: {
+  //   marginRight: theme.spacing(1),
+  // },
   title: {
     flexGrow: 1,
   },
