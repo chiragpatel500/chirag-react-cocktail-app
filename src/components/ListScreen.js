@@ -83,7 +83,6 @@ const useStyles = makeStyles((theme) => ({
                         >
                           <li>{drinks.strDrink}</li>
                         </Typography>
-                        {/* {" — I'll be in your neighborhood doing errands this…"} */}
                         Type:{drinks.strAlcoholic}
                       </React.Fragment>
                     }

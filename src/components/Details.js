@@ -16,7 +16,9 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Box from '@material-ui/core/Box';
-// import { BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
+
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,9 +43,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Details() {
+function Details(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -69,7 +72,6 @@ function Details() {
       <CardMedia
         className={classes.media}
         image ="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/202984001"
-        // src={drinks.strDrinkThumb} 
         title="Paella dish"
       />
       <CardContent>
