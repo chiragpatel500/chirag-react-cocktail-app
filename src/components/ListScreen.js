@@ -37,7 +37,7 @@ const ListScreen = () => {
   useEffect(() => {
     fetchApi();
   });
-  
+
 const useStyles = makeStyles((theme) => ({
     root: {
       width: "100%",
