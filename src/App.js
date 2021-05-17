@@ -2,26 +2,30 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import SearchPage from './components/SearchPage';
 import NavBar from './components/NavBar';
-import ListScreen from './components/ListScreen';
-import Details from './components/Details';
+// import ListScreen from './components/ListScreen';
+// import Details from './components/Details';
+import Login from './components/Login';
 import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
+import ChatRoom from './components/ChatRoom';
 
 function App() {
   return (
     <Router>
     <div className="App">
       <NavBar/>
-      <SearchPage />
-    <Switch>
-          <Route exact path="/">
-            <SearchPage />
+        <Switch>
+          <route exact path="/">
+            <SearchPage/>
+          </route>
+        <Route exact path="/Login">
+            <Login />
           </Route>
-          <Route exact path="/ListScreen">
-            <ListScreen />
+          
+            <Route exact path="/ChatRoom">
+            <ChatRoom />
           </Route>
-          <Route exact path="/detail/:id" children={<Details />} />
         </Switch>
-      
+
       </div>
     </Router>
   );
