@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Details(props) {
+function Details() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 

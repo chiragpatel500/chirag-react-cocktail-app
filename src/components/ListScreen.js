@@ -12,9 +12,10 @@ import { BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
 
 
 
-const ListScreen = () => {
+const ListScreen = (props) => {
   const [drinks, setdrink] = useState("");
-  
+  // const SearchKey = props.Search;
+
   const fetchApi = () => {
     const url = "https://cab-cors-anywhere.herokuapp.com/https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita";
     fetch(url, {
@@ -58,6 +59,7 @@ const useStyles = makeStyles((theme) => ({
   const classes = useStyles();
     
   return (
+    <Router>
     <Box display="flex" flexDirection="column" alignItems="center">
       {drinks.length !== 0 ? (
         drinks.map((drinks) => {
@@ -94,7 +96,12 @@ const useStyles = makeStyles((theme) => ({
       ) : (
         <p>Searching For you</p>
       )}
+
+<switch>
+
+</switch>
     </Box>
+  </Router>
   );
 };
 
