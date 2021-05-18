@@ -10,6 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import Box from '@material-ui/core/Box';
 import { BrowserRouter as Router,Switch,Route,Link, useParams} from "react-router-dom";
 import Details from "./Details";
+// import {CocktailsContext} from '../context/cocktailsContext';
 
 
 
@@ -97,13 +98,6 @@ const useStyles = makeStyles((theme) => ({
       ) : (
         <p>Searching For you</p>
       )}
-
-<switch>
-<Route exact path="{`${path}/:strDrink`}">
-<Details />
-</Route>
-</switch>
-
     </Box>
   </Router>
   );

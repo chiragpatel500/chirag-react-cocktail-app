@@ -9,12 +9,12 @@ import Login from './components/Login';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import ChatRoom from './components/ChatRoom';
 
+
 function App() {
-  return (
+  return (   
     <Router>
     <div className="App">
       <NavBar/>
-
         <Switch>
             <Route exact path="/">
             <SearchPage />

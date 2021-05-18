@@ -33,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
 function SearchPage() {
   const classes = useStyles();
   const [searchKey, setSearchKey]= useState("");
+  
 const SearchFunction = (ev)=>{
   setSearchKey(ev.target.value);
 };
@@ -40,7 +41,7 @@ const SearchFunction = (ev)=>{
     <div className={classes.root} >
          <TextField
           id="outlined-full-width"
-          style={{ margin: 7 },{backgroundColor:'red'}}
+          style={{ margin: 7 },{backgroundColor:'blue'}}
           placeholder="e.g Margarita"
           onChange={(ev)=>SearchFunction(ev)}
           margin="normal"
@@ -48,7 +49,6 @@ const SearchFunction = (ev)=>{
             shrink: true,
           }}
           variant="outlined"/>
-          
           <Link to={`/ListScreen/${searchKey}`}>
           <Button
         variant="contained"
@@ -56,11 +56,8 @@ const SearchFunction = (ev)=>{
         className={classes.button}
         endIcon={<Icon>send</Icon>}
       >
-        </Button> 
-</Link>
-    
-     
-      
+      </Button> 
+</Link>  
     </div>
   );
 }
