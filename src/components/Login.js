@@ -1,9 +1,10 @@
 import React from 'react'
-import { Grid,Paper, Avatar, TextField, Button, Typography,Link } from '@material-ui/core'
+import { Grid,Paper, Avatar, TextField, Button, Typography} from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Register from './Register';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const Login=()=>{
 
@@ -35,7 +36,7 @@ const Login=()=>{
                 </Link>
                 </Typography>
                 <Typography > Do you have an account ?
-                     <Link href="/Register">
+                     <Link to="/Register">
                      Register Now 
                 </Link>
                 </Typography>

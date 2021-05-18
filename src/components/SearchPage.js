@@ -1,10 +1,11 @@
-import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import { red } from '@material-ui/core/colors';
 import ListScreen from './ListScreen';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,7 +32,9 @@ const useStyles = makeStyles((theme) => ({
 
 function SearchPage() {
   const classes = useStyles();
-const Search = ()=>{
+  const [searchKey, setSearchKey]= useState("");
+const SearchFunction = (ev)=>{
+  setSearchKey(ev.target.value);
 };
   return (
     <div className={classes.root} >
@@ -39,24 +42,25 @@ const Search = ()=>{
           id="outlined-full-width"
           style={{ margin: 7 },{backgroundColor:'red'}}
           placeholder="e.g Margarita"
+          onChange={(ev)=>SearchFunction(ev)}
           margin="normal"
           InputLabelProps={{
             shrink: true,
           }}
-          variant="outlined" 
-        />
-
-          <Button onClick={() => { alert('clicked') }}
+          variant="outlined"/>
+          
+          <Link to={`/ListScreen/${searchKey}`}>
+          <Button
         variant="contained"
         color="primary"
         className={classes.button}
         endIcon={<Icon>send</Icon>}
       >
         </Button> 
-
+</Link>
     
      
-      {/* <ListScreen SearchKey={Search}/> */}
+      
     </div>
   );
 }

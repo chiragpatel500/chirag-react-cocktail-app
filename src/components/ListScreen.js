@@ -8,16 +8,17 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import Box from '@material-ui/core/Box';
-import { BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
+import { BrowserRouter as Router,Switch,Route,Link, useParams} from "react-router-dom";
+import Details from "./Details";
 
 
 
 const ListScreen = (props) => {
   const [drinks, setdrink] = useState("");
-  // const SearchKey = props.Search;
-
+  
+let {cocktailsName} = useParams();
   const fetchApi = () => {
-    const url = "https://cab-cors-anywhere.herokuapp.com/https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita";
+    const url = "https://cab-cors-anywhere.herokuapp.com/https://www.thecocktaildb.com/api/json/v1/1/search.php?s="+cocktailsName;
     fetch(url, {
       method: "GET",
       headers: {
@@ -98,8 +99,11 @@ const useStyles = makeStyles((theme) => ({
       )}
 
 <switch>
-
+<Route exact path="{`${path}/:strDrink`}">
+<Details />
+</Route>
 </switch>
+
     </Box>
   </Router>
   );

@@ -34,7 +34,7 @@ function App() {
           <Route exact path="/Login">
             <Login />
           </Route>
-          <Route exact path="/ListScreen">
+          <Route exact path="/ListScreen/:cocktailsName">
             <ListScreen/>
           </Route>
           <Route exact path="/Details">
