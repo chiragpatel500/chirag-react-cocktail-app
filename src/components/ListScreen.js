@@ -72,7 +72,6 @@ const useStyles = makeStyles((theme) => ({
                     />
                   </ListItemAvatar>
                   <ListItemText
-                    // primary = <p>{drinks.strDrink}</p>
                     secondary={
                       <React.Fragment>
                         <Typography

@@ -31,6 +31,9 @@ function App() {
           <Route exact path="/Register">
             <Register />
           </Route>
+          <Route exact path="/Login">
+            <Login />
+          </Route>
         </Switch>
       </div>
     </Router>
