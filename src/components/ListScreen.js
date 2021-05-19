@@ -10,7 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import Box from '@material-ui/core/Box';
 import { BrowserRouter as Router,Switch,Route,Link, useParams} from "react-router-dom";
 import Details from "./Details";
-// import {CocktailsContext} from '../context/cocktailsContext';
+
 
 
 
@@ -67,6 +67,7 @@ const useStyles = makeStyles((theme) => ({
       {drinks.length !== 0 ? (
         drinks.map((drinks) => {
           return (
+            <Link to="./Details">
                <List className={classes.root}>
                  <ListItem>
                    <ListItemAvatar>
@@ -94,6 +95,7 @@ const useStyles = makeStyles((theme) => ({
                 </ListItem>
                 <Divider variant="inset" component="li" />
               </List>
+              </Link>
           );
         })
       ) : (

@@ -8,7 +8,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import ChatRoom from './components/ChatRoom';
-// import {CocktailsContextProvider} from './context/cocktailsContext';
+import {CocktailsContextProvider} from './context/cocktailsContext';
 
 // This can be used anywhere in the app
 // const Wrapper = ({ children }) => (
