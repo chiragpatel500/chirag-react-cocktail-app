@@ -16,6 +16,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Box from '@material-ui/core/Box';
+import Listscreen from './ListScreen';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 
@@ -131,6 +132,7 @@ function Details() {
 }
 
 export default Details;
+
 // Deatails
 // deatils 1 shows name = "strDrink": "Margarita",
 // details 2 shows picture = "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg",

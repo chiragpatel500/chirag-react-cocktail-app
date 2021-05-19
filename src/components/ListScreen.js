@@ -18,6 +18,7 @@ const ListScreen = (props) => {
   const [drinks, setdrink] = useState("");
   
 let {cocktailsName} = useParams();
+
   const fetchApi = () => {
     const url = "https://cab-cors-anywhere.herokuapp.com/https://www.thecocktaildb.com/api/json/v1/1/search.php?s="+cocktailsName;
     fetch(url, {
