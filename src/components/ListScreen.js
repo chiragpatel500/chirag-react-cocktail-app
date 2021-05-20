@@ -16,14 +16,8 @@ import {CocktailsContext} from '../context/cocktailsContext';
 
 
 const ListScreen = (props) => {
-  // const [drinks, setdrink] = useState("");
-  
-  // Context Part
    const { cocktails, setCocktails} = useContext(CocktailsContext);
-  //  console.log(`cocktails`, cocktails);
-  
-
-let {cocktailsName} = useParams();
+  let {cocktailsName} = useParams();
 
   const fetchApi = () => {
     const url = "https://cab-cors-anywhere.herokuapp.com/https://www.thecocktaildb.com/api/json/v1/1/search.php?s="+cocktailsName;
@@ -70,7 +64,6 @@ const useStyles = makeStyles((theme) => ({
   const classes = useStyles();
     
   return (
-    // <p>hello there</p>
     <Box display="flex" flexDirection="column" alignItems="center">
       {cocktails.length !== 0 ? (
         cocktails.map((cocktail) => {

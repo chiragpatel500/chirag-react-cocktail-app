@@ -48,24 +48,23 @@ const useStyles = makeStyles((theme) => ({
 
 function Details() {
   const classes = useStyles();
-  // const [expanded, setExpanded] = React.useState(false);
- 
   const { cocktails, setCocktails} = useContext(CocktailsContext);
-let {drinkId} = useParams();
+
+  let {drinkId} = useParams();
   console.log(drinkId);
 
-const [selectedCocktail, setSelectedCocktail] = useState(null);
-console.log(cocktails);
+  const [selectedCocktail, setSelectedCocktail] = useState(null);
+  console.log(cocktails);
 
-const findCocktail =()=>{
+  const findCocktail =()=>{
   const selectedCocktail = cocktails.filter(cocktail=>{
     console.log(cocktail.idDrink)
-
     return cocktail.idDrink == drinkId
     })
     setSelectedCocktail(selectedCocktail[0])
   }
   console.log(selectedCocktail)
+
 useEffect(() => {
   findCocktail();
 },[]);
