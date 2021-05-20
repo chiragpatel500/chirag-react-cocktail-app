@@ -21,8 +21,7 @@ import {CocktailsContextProvider} from './context/cocktailsContext';
 
 function App() {
   return ( 
-      //<wrapper> 
-      // <CocktailsContextProvider>
+      <CocktailsContextProvider>
     <Router>
     <div className="App">
       <NavBar/>
@@ -48,13 +47,13 @@ function App() {
           <Route exact path="/ListScreen/:cocktailsName">
             <ListScreen/>
           </Route>
-          <Route exact path="/Details">
+          <Route exact path="/Details/:drinkId">
           <Details/>
           </Route>
         </Switch>
       </div>
     </Router>
-    // </wrapper>
+  </CocktailsContextProvider>
   );
 }
 

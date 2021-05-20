@@ -1,4 +1,3 @@
-import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -17,8 +16,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Box from '@material-ui/core/Box';
 import Listscreen from './ListScreen';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-// import {CocktailsContext} from '../context/cocktailsContext';
+import { BrowserRouter as Router, Switch, Route, Link, useParams } from "react-router-dom";
+import {CocktailsContext} from '../context/cocktailsContext';
+import React, { useState, useEffect, useContext } from 'react';
 
 
 
@@ -48,59 +48,74 @@ const useStyles = makeStyles((theme) => ({
 
 function Details() {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
+  // const [expanded, setExpanded] = React.useState(false);
  
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  const { cocktails, setCocktails} = useContext(CocktailsContext);
+let {drinkId} = useParams();
+  console.log(drinkId);
 
-  // Context Part
-//   const { cocktails, setCocktails} = useContext(CocktailsContext);
-// console.log(`cocktails`, Cocktails);
+const [selectedCocktail, setSelectedCocktail] = useState(null);
+console.log(cocktails);
 
+const findCocktail =()=>{
+  const selectedCocktail = cocktails.filter(cocktail=>{
+    console.log(cocktail.idDrink)
+
+    return cocktail.idDrink == drinkId
+    })
+    setSelectedCocktail(selectedCocktail[0])
+  }
+  console.log(selectedCocktail)
+useEffect(() => {
+  findCocktail();
+},[]);
 
   return (
-    <Box display="flex" flexDirection="column" alignItems="center">
-    <Card className={classes.root}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            r
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title="Shrimp and Chorizo Paella"
-        // title={drinks.strDrink}
-        subheader="September 14, 2016"
-      />
-      <CardMedia
-        className={classes.media}
-        image ="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/202984001"
-        // image= {drinks.strDrinkThumb}
-        title="Paella dish"
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {/* <textarea name="" id="" cols="30" rows="10">{drinks.strInstructions}</textarea> */}
-          This impressive paella is a perfect party dish and a fun meal to cook together with your
-          guests. Add 1 cup of frozen peas along with the mussels, if you like.
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-      </CardActions>
-    </Card>
-  </Box>
-  );
+  <div>
+{selectedCocktail != null &&  (
+  <Box display="flex" flexDirection="column" alignItems="center">
+<Card className={classes.root}>
+  <CardHeader
+    avatar={
+      <Avatar aria-label="recipe" className={classes.avatar}>
+       {selectedCocktail.strDrinkThumb}
+      </Avatar>
+    }
+    action={
+      <IconButton aria-label="settings">
+        <MoreVertIcon />
+      </IconButton>
+    }
+    // title="Shrimp and Chorizo Paella"
+    title= {selectedCocktail.strDrink}
+    // subheader="September 14, 2016"
+  />
+  <CardMedia
+    className={classes.media}
+    // image ="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/202984001"
+    image= {selectedCocktail.strDrinkThumb}
+    title="Paella dish"
+  />
+  <CardContent>
+    <Typography variant="body2" color="textSecondary" component="p">
+      <textarea name="" id="" cols="30" rows="10">{selectedCocktail.strInstructions}</textarea>
+      {/* This impressive paella is a perfect party dish and a fun meal to cook together with your
+      guests. Add 1 cup of frozen peas along with the mussels, if you like. */}
+    </Typography>
+  </CardContent>
+  <CardActions disableSpacing>
+    <IconButton aria-label="add to favorites">
+      <FavoriteIcon />
+    </IconButton>
+    <IconButton aria-label="share">
+      <ShareIcon />
+    </IconButton>
+  </CardActions>
+</Card>
+</Box>
+)}
+</div> 
+)
 }
 
 export default Details;

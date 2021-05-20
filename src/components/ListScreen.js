@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -8,15 +8,21 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import Box from '@material-ui/core/Box';
-import { BrowserRouter as Router,Switch,Route,Link, useParams} from "react-router-dom";
+import { BrowserRouter as Router,Switch,Route,Link, useParams, } from "react-router-dom";
 import Details from "./Details";
+import {CocktailsContext} from '../context/cocktailsContext';
 
 
 
 
 const ListScreen = (props) => {
-  const [drinks, setdrink] = useState("");
+  // const [drinks, setdrink] = useState("");
   
+  // Context Part
+   const { cocktails, setCocktails} = useContext(CocktailsContext);
+  //  console.log(`cocktails`, cocktails);
+  
+
 let {cocktailsName} = useParams();
 
   const fetchApi = () => {
@@ -34,14 +40,14 @@ let {cocktailsName} = useParams();
       })
         .then((data) => {
             console.log(data);
-            setdrink(data.drinks);
+            setCocktails(data.drinks);
        
         });
   };
 
   useEffect(() => {
     fetchApi();
-  });
+  },[]);
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -59,21 +65,23 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
+
+
   const classes = useStyles();
     
   return (
-    <Router>
+    // <p>hello there</p>
     <Box display="flex" flexDirection="column" alignItems="center">
-      {drinks.length !== 0 ? (
-        drinks.map((drinks) => {
+      {cocktails.length !== 0 ? (
+        cocktails.map((cocktail) => {
           return (
-            <Link to="./Details">
+            <Link to={`/Details/${cocktail.idDrink}`}>
                <List className={classes.root}>
                  <ListItem>
                    <ListItemAvatar>
                    <Avatar
                       alt="Remy Sharp"
-                      src={drinks.strDrinkThumb}
+                      src={cocktail.strDrinkThumb}
                       className={classes.large}
                     />
                   </ListItemAvatar>
@@ -86,23 +94,22 @@ const useStyles = makeStyles((theme) => ({
                           className={classes.inline}
                           color="textPrimary"
                         >
-                          <li>{drinks.strDrink}</li>
+                          <li>{cocktail.strDrink}</li>
                         </Typography>
-                        Type:{drinks.strAlcoholic}
+                        Type:{cocktail.strAlcoholic}
                       </React.Fragment>
                     }
                   />
                 </ListItem>
                 <Divider variant="inset" component="li" />
               </List>
-              </Link>
+          </Link>
           );
         })
       ) : (
         <p>Searching For you</p>
       )}
     </Box>
-  </Router>
   );
 };
 
