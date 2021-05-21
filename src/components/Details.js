@@ -20,13 +20,15 @@ import { BrowserRouter as Router, Switch, Route, Link, useParams } from "react-r
 import {CocktailsContext} from '../context/cocktailsContext';
 import React, { useState, useEffect, useContext } from 'react';
 
-
-
-
 const useStyles = makeStyles((theme) => ({
+ main:{
+  backgroundColor:'violet',
+  margintop: '-20px',
+ },
   root: {
     maxWidth: 345,
     backgroundColor:'violet',
+    color:'white',
   },
   media: {
     height: 0,
@@ -71,7 +73,7 @@ useEffect(() => {
 },[]);
 
   return (
-  <div>
+  <div className={classes.main}>
 {selectedCocktail != null &&  (
   <Box display="flex" flexDirection="column" alignItems="center">
 <Card className={classes.root}>
@@ -98,22 +100,12 @@ useEffect(() => {
   />
   <CardContent>
     <Typography variant="body2" color="textSecondary" component="p">
-      <textarea name="" id="" cols="30" rows="10">{selectedCocktail.strInstructions}</textarea>
-      {/* This impressive paella is a perfect party dish and a fun meal to cook together with your
-      guests. Add 1 cup of frozen peas along with the mussels, if you like. */}
+    {selectedCocktail.strInstructions}
+
     </Typography>
   </CardContent>
-  <CardActions disableSpacing>
-    <IconButton aria-label="add to favorites">
-      <FavoriteIcon />
-    </IconButton>
-    <IconButton aria-label="share">
-      <ShareIcon />
-    </IconButton>
-  </CardActions>
-</Card>
-
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUISDO05e3kmEAQNLEbkK_dYlF2G_Dbk3nJw&usqp=CAU" alt="" />
+</Card>
 </Box>
 )}
 </div> 

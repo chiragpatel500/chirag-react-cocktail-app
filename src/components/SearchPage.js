@@ -11,7 +11,7 @@ import { Height } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   main:{
-    backgroundColor:'#FDA7DF',
+    backgroundColor:'violet',
     color:'black',
   },
   root: {
@@ -45,7 +45,7 @@ const SearchFunction = (ev)=>{
   return ( 
 <div className={classes.main}>
   <div>
-  <h1>  WELCOME TO COCKTAIL CHOICE APP</h1>
+  <h2>  WELCOME TO COCKTAIL CHOICE APP</h2>
 
   <h2>Here you can choose the cocktail of your choice and learn how to make it</h2> 
       <div className={classes.root} >
@@ -69,10 +69,11 @@ const SearchFunction = (ev)=>{
       </Button> 
 </Link>
       </div> 
-          
+<div>   
     <h4>Kindly  type the name of your preffred choice of coktail and know about it's details</h4>
      <h4> once you find the cocktial of your choice kindly clkick on it to find mpore details about it.</h4>
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUISDO05e3kmEAQNLEbkK_dYlF2G_Dbk3nJw&usqp=CAU" alt="" />
+</div> 
 </div>
 </div>
   );

@@ -45,10 +45,15 @@ const ListScreen = (props) => {
   },[]);
 
 const useStyles = makeStyles((theme) => ({
-    root: {
+  main:{
+    backgroundColor:'violet',
+    color:'white',
+    margintop:'-20px',
+  },  
+  root: {
       width: "100%",
-      maxWidth: "36ch",
-    backgroundColor: theme.palette.background.paper,
+      maxWidth: "30ch",
+    // backgroundColor: theme.palette.background.paper,
     },
     inline: {
       display: "inline"
@@ -61,6 +66,7 @@ const useStyles = makeStyles((theme) => ({
   })); 
 const classes = useStyles();  
   return (
+    <div className={classes.main}>
     <Box display="flex" flexDirection="column" alignItems="center">
       {cocktails.length !== 0 ? (
         cocktails.map((cocktail) => {
@@ -101,6 +107,7 @@ const classes = useStyles();
       )}
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUISDO05e3kmEAQNLEbkK_dYlF2G_Dbk3nJw&usqp=CAU" alt="" />
     </Box>
+    </div>
   );
 };
 

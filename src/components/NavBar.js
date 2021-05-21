@@ -13,8 +13,7 @@ import { Icon } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
-    
+    flexGrow: 1,    
   },
   title: {
     flexGrow: 1,
@@ -25,13 +24,14 @@ function NavBar() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
+
+    <div className={classes.root} >
+      <AppBar position="static"style={{backgroundColor:'violet'}}>
         <Toolbar>
           <Button color="inherit">
             <Link to="/Login">Login</Link>
           </Button>
-            <Typography variant="h6" className={classes.title}>
+            <Typography variant="h6" className={classes.title} >
                 <Link to="/SearchPage">CockTails</Link>
           </Typography>
           <Button color="inherit">
