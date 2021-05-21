@@ -9,7 +9,7 @@ import Login from './components/Login';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import ChatRoom from './components/ChatRoom';
 import {CocktailsContextProvider} from './context/cocktailsContext';
-
+import BottomNav from './components/BottomNav';
 
 function App() {
   return ( 
@@ -43,6 +43,7 @@ function App() {
           <Details/>
           </Route>
         </Switch>
+      <BottomNav/>
       </div>
     </Router>
   </CocktailsContextProvider>

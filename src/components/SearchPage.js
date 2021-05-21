@@ -7,7 +7,7 @@ import ListScreen from './ListScreen';
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Height } from '@material-ui/icons';
-
+import BottomNav from './BottomNav';
 
 const useStyles = makeStyles((theme) => ({
   main:{
@@ -46,8 +46,9 @@ const SearchFunction = (ev)=>{
 <div className={classes.main}>
   <div>
   <h2>  WELCOME TO COCKTAIL CHOICE APP</h2>
-
   <h2>Here you can choose the cocktail of your choice and learn how to make it</h2> 
+  <h4>Kindly  type the name of your preffered choice of cocktail and know about it's details</h4>
+  <h4> once you find the cocktail of your choice kindly clkick on it to find more details about it.</h4>   
       <div className={classes.root} >
          <TextField
           id="outlined-full-width"
@@ -70,8 +71,6 @@ const SearchFunction = (ev)=>{
 </Link>
       </div> 
 <div>   
-    <h4>Kindly  type the name of your preffred choice of coktail and know about it's details</h4>
-     <h4> once you find the cocktial of your choice kindly clkick on it to find mpore details about it.</h4>
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUISDO05e3kmEAQNLEbkK_dYlF2G_Dbk3nJw&usqp=CAU" alt="" />
 </div> 
 </div>
