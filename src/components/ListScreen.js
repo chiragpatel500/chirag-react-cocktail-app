@@ -19,6 +19,8 @@ const ListScreen = (props) => {
   
   const { cocktails, setCocktails} = useContext(CocktailsContext);
   let {cocktailsName} = useParams();
+const [error, setError] = useState(null)
+const [loading, setLoading] = useState(true)
 
   const fetchApi = () => {
     const url = "https://cab-cors-anywhere.herokuapp.com/https://www.thecocktaildb.com/api/json/v1/1/search.php?s="+cocktailsName;
@@ -35,7 +37,13 @@ const ListScreen = (props) => {
       })
         .then((data) => {
             console.log(data);
-            setCocktails(data.drinks);
+            setLoading(false)
+            if(data.drinks === null){
+              setError('Sorry, this drink is not available')
+            }else{
+
+              setCocktails(data.drinks);
+            }
        
         });
   };
@@ -68,44 +76,51 @@ const classes = useStyles();
   return (
     <div className={classes.main}>
     <Box display="flex" flexDirection="column" alignItems="center">
-      {cocktails.length !== 0 ? (
-        cocktails.map((cocktail) => {
-          return (
-            <Link to={`/Details/${cocktail.idDrink}`}>
-               <List className={classes.root}>
-                 <ListItem>
-                   <ListItemAvatar>
-                   <Avatar
-                      alt="Remy Sharp"
-                      src={cocktail.strDrinkThumb}
-                      className={classes.large}
-                    />
-                  </ListItemAvatar>
-                  <ListItemText
-                    secondary={
-                      <React.Fragment>
-                        <Typography
-                          component="span"
-                          variant="body2"
-                          className={classes.inline}
-                          color="textPrimary"
-                        >
-                          <li>{cocktail.strDrink}</li>
-                          <li>{cocktail.strCategory}</li>
-                        </Typography>
-                        Type:{cocktail.strAlcoholic} 
-                      </React.Fragment>
-                    }
-                  />
-                </ListItem>
-                <Divider variant="inset" component="li" />
-              </List>
-          </Link>
-          );
-        })
-      ) : (
-        <p>Searching For you</p>
-      )}
+      {
+        loading ? (
+          <p>Searching For you</p>
+        ): (
+          error === null ? (
+            cocktails.map((cocktail) => {
+              return (
+                <Link to={`/Details/${cocktail.idDrink}`}>
+                   <List className={classes.root}>
+                     <ListItem>
+                       <ListItemAvatar>
+                       <Avatar
+                          alt="Remy Sharp"
+                          src={cocktail.strDrinkThumb}
+                          className={classes.large}
+                        />
+                      </ListItemAvatar>
+                      <ListItemText
+                        secondary={
+                          <React.Fragment>
+                            <Typography
+                              component="span"
+                              variant="body2"
+                              className={classes.inline}
+                              color="textPrimary"
+                            >
+                              <li>{cocktail.strDrink}</li>
+                              <li>{cocktail.strCategory}</li>
+                            </Typography>
+                            Type:{cocktail.strAlcoholic} 
+                          </React.Fragment>
+                        }
+                      />
+                    </ListItem>
+                    <Divider variant="inset" component="li" />
+                  </List>
+              </Link>
+              );
+            })
+          ) : (
+            <p>{error}</p>
+          )
+        )
+      }
+     
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUISDO05e3kmEAQNLEbkK_dYlF2G_Dbk3nJw&usqp=CAU" alt="" />
     </Box>
     </div>

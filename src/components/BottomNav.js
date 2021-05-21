@@ -5,15 +5,17 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import RestoreIcon from '@material-ui/icons/Restore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
-
+import history from '../history'
 const useStyles = makeStyles({
   root: {
-    width: '200',
+   
     backgroundColor:'violet',
     display:'flex',
     flexDirection:'row',
     alignItems:'center',
-    position:'sticky',
+    position: 'fixed',
+    width: '100%',
+    bottom: 0,
     
   },
 });
@@ -25,8 +27,8 @@ export default function SimpleBottomNavigation() {
   return (
     <BottomNavigation
       value={value}
-      onChange={(event, newValue) => {
-        setValue(newValue);
+      onClick={(event, newValue) => {
+        history.goBack();
       }}
       showLabels
       className={classes.root}
