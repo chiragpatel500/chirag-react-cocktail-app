@@ -7,7 +7,7 @@ import Details from './components/Details';
 import Register from './components/Register';
 import Login from './components/Login';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import ChatRoom from './components/ChatRoom';
+import Chat from './components/Chat';
 import {CocktailsContextProvider} from './context/cocktailsContext';
 import BottomNav from './components/BottomNav';
 
@@ -27,8 +27,8 @@ function App() {
           <Route exact path="/SearchPage">
         <SearchPage/>
           </Route>
-          <Route exact path="/ChatRoom">
-            <ChatRoom />
+          <Route exact path="/Chat">
+            <Chat/>
           </Route>
           <Route exact path="/Register">
             <Register />

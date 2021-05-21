@@ -6,10 +6,11 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Login from './Login';
 import SearchPage from './SearchPage';
-import ChatRoom from './ChatRoom';
+import Chat from './Chat';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import ChatIcon from '@material-ui/icons/Chat';
 import { Icon } from '@material-ui/core';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,7 +36,7 @@ function NavBar() {
                 <Link to="/SearchPage">Buddel Cocktails</Link>
           </Typography>
           <Button color="inherit">
-            <Link to="/ChatRoom">Chat</Link>
+            <Link to="/Chat">Chat</Link>
           </Button>
         </Toolbar>
       </AppBar>
