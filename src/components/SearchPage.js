@@ -12,7 +12,7 @@ import BottomNav from './BottomNav';
 const useStyles = makeStyles((theme) => ({
   main:{
     backgroundColor:'violet',
-    color:'black',
+    color:'white',
   },
   root: {
     display: 'flex',
@@ -46,9 +46,9 @@ const SearchFunction = (ev)=>{
 <div className={classes.main}>
   <div>
   <h2>  WELCOME TO COCKTAIL CHOICE APP</h2>
-  <h2>Here you can choose the cocktail of your choice and learn how to make it</h2> 
+  <h4>Here you can choose the cocktail of your choice and learn how to make it</h4> 
   <h4>Kindly  type the name of your preffered choice of cocktail and know about it's details</h4>
-  <h4> once you find the cocktail of your choice kindly clkick on it to find more details about it.</h4>   
+  <h4> Once you find the cocktail of your choice kindly click on it to get more details about it.</h4>   
       <div className={classes.root} >
          <TextField
           id="outlined-full-width"

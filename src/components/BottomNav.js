@@ -10,7 +10,11 @@ const useStyles = makeStyles({
   root: {
     width: '200',
     backgroundColor:'violet',
-    marginBottom:'20px',
+    display:'flex',
+    flexDirection:'row',
+    alignItems:'center',
+    position:'sticky',
+    
   },
 });
 
@@ -27,9 +31,7 @@ export default function SimpleBottomNavigation() {
       showLabels
       className={classes.root}
     >
-      <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-      <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-      <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+      <BottomNavigationAction label="Return" icon={<RestoreIcon />} />
     </BottomNavigation>
   );
 }

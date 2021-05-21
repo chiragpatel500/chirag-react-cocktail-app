@@ -91,8 +91,9 @@ const classes = useStyles();
                           color="textPrimary"
                         >
                           <li>{cocktail.strDrink}</li>
+                          <li>{cocktail.strCategory}</li>
                         </Typography>
-                        Type:{cocktail.strAlcoholic}
+                        Type:{cocktail.strAlcoholic} 
                       </React.Fragment>
                     }
                   />

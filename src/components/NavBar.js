@@ -32,7 +32,7 @@ function NavBar() {
             <Link to="/Login">Login</Link>
           </Button>
             <Typography variant="h6" className={classes.title} >
-                <Link to="/SearchPage">CockTails</Link>
+                <Link to="/SearchPage">Buddel Cocktails</Link>
           </Typography>
           <Button color="inherit">
             <Link to="/ChatRoom">Chat</Link>

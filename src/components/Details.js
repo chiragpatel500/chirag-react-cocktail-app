@@ -34,19 +34,10 @@ const useStyles = makeStyles((theme) => ({
     height: 0,
     paddingTop: '56.25%', // 16:9
   },
-  expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
-  avatar: {
-    backgroundColor: red[500],
-  },
+ 
+  // avatar: {
+  //   backgroundColor: red[500],
+  // },
 }));
 
 function Details() {
@@ -79,32 +70,24 @@ useEffect(() => {
 <Card className={classes.root}>
   <CardHeader
     avatar={
-      <Avatar aria-label="recipe" className={classes.avatar}>
+      <Avatar aria-label={selectedCocktail.strDrinkThumb} className={classes.avatar}>
        {selectedCocktail.strDrinkThumb}
       </Avatar>
     }
-    action={
-      <IconButton aria-label="settings">
-        <MoreVertIcon />
-      </IconButton>
-    }
-    // title="Shrimp and Chorizo Paella"
     title= {selectedCocktail.strDrink}
-    // subheader="September 14, 2016"
   />
   <CardMedia
     className={classes.media}
-    // image ="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/202984001"
     image= {selectedCocktail.strDrinkThumb}
-    title="Paella dish"
   />
   <CardContent>
     <Typography variant="body2" color="textSecondary" component="p">
+    <h5>Type of glass :{selectedCocktail.strGlass}</h5>
+    <h4>Instructions for making this Cocktail</h4>
     {selectedCocktail.strInstructions}
-
     </Typography>
   </CardContent>
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUISDO05e3kmEAQNLEbkK_dYlF2G_Dbk3nJw&usqp=CAU" alt="" />
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUISDO05e3kmEAQNLEbkK_dYlF2G_Dbk3nJw&usqp=CAU" alt="" />
 </Card>
 </Box>
 )}
