@@ -10,14 +10,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import ChatRoom from './components/ChatRoom';
 import {CocktailsContextProvider} from './context/cocktailsContext';
 
-// This can be used anywhere in the app
-// const Wrapper = ({ children }) => (
-//   <div>
-//     <h1> header</h1>
-//     <div>{children}</div>
-//     <div>footer</div>
-//   </div>
-// );
 
 function App() {
   return ( 

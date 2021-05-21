@@ -29,6 +29,9 @@ function Copyright() {
 }
 
 const useStyles = makeStyles((theme) => ({
+  main:{
+    backgroundColor:'violet',
+  },
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
@@ -53,7 +56,8 @@ function Register() {
   const classes = useStyles();
 
   return (
-    <Container component="main" maxWidth="xs">
+   
+    <Container component="main" maxWidth="xs" className={classes.main}>
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -139,6 +143,7 @@ function Register() {
         <Copyright />
       </Box>
     </Container>
+
   );
 }
 export default Register;

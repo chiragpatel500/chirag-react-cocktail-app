@@ -26,7 +26,7 @@ function NavBar() {
   return (
 
     <div className={classes.root} >
-      <AppBar position="static"style={{backgroundColor:'violet'}}>
+      <AppBar position="static" style={{backgroundColor:'violet'}}>
         <Toolbar>
           <Button color="inherit">
             <Link to="/Login">Login</Link>
