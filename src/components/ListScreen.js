@@ -15,8 +15,9 @@ import {CocktailsContext} from '../context/cocktailsContext';
 
 
 
-const ListScreen = (props) => {
-   const { cocktails, setCocktails} = useContext(CocktailsContext);
+const ListScreen = (props) => { 
+  
+  const { cocktails, setCocktails} = useContext(CocktailsContext);
   let {cocktailsName} = useParams();
 
   const fetchApi = () => {
@@ -57,12 +58,8 @@ const useStyles = makeStyles((theme) => ({
       flexDirection:"column",
       alignItems: "center",
     }
-  }));
-
-
-
-  const classes = useStyles();
-    
+  })); 
+const classes = useStyles();  
   return (
     <Box display="flex" flexDirection="column" alignItems="center">
       {cocktails.length !== 0 ? (
@@ -102,6 +99,7 @@ const useStyles = makeStyles((theme) => ({
       ) : (
         <p>Searching For you</p>
       )}
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUISDO05e3kmEAQNLEbkK_dYlF2G_Dbk3nJw&usqp=CAU" alt="" />
     </Box>
   );
 };

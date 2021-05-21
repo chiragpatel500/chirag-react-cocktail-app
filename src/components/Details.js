@@ -26,6 +26,7 @@ import React, { useState, useEffect, useContext } from 'react';
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
+    backgroundColor:'violet',
   },
   media: {
     height: 0,
@@ -111,6 +112,8 @@ useEffect(() => {
     </IconButton>
   </CardActions>
 </Card>
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUISDO05e3kmEAQNLEbkK_dYlF2G_Dbk3nJw&usqp=CAU" alt="" />
 </Box>
 )}
 </div> 
