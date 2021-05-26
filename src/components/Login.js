@@ -5,40 +5,40 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Register from './Register';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-// import { AuthContext } from "../context/authContext";
-// import firebase from "../firebaseConfig.js";
+import { AuthContext } from "../context/authContext";
+import firebase from "../firebaseConfig.js";
 
 const Login=()=>{
     // Firebase start
-    // const [state, setState] = useState({ email: "", password: "" });
-    // const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
-    // const handleChange = (e) => {
-    //   setState({ ...state, [e.target.name]: e.target.value });
-    // };
+    const [state, setState] = useState({ email: "", password: "" });
+    const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+    const handleChange = (e) => {
+      setState({ ...state, [e.target.name]: e.target.value });
+    };
   
-    // const login = () => {
-    //   firebase
-    //     .auth()
-    //     .signInWithEmailAndPassword(state.email, state.password)
-    //     .then((userCredential) => {
-    //       // Signed in
-    //       var user = userCredential.user;
-    //       setUser(user);
-    //       setIsLoggedIn(true);
-    //       // ...
-    //     })
-    //     .catch((error) => {
-    //       var errorCode = error.code;
-    //       var errorMessage = error.message;
-    //       setUser(null);
-    //       setIsLoggedIn(false);
-    //     });
-    // };
+    const login = () => {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(state.email, state.password)
+        .then((userCredential) => {
+          // Signed in
+          var user = userCredential.user;
+          setUser(user);
+          setIsLoggedIn(true);
+          // ...
+        })
+        .catch((error) => {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          setUser(null);
+          setIsLoggedIn(false);
+        });
+    };
   
-    // const handleOnSubmit = (event) => {
-    //   event.preventDefault();
-    //   login();
-    // };
+    const handleOnSubmit = (event) => {
+      event.preventDefault();
+      login();
+    };
     // Firebase end 
 
     
@@ -58,8 +58,8 @@ const Login=()=>{
             
             <FormControlLabel control={<Checkbox name="checkedB" color="primary"/>} label="Remember me"/>
                 
-                <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>Sign in</Button>
-                {/* <Button onSubmit={handleOnSubmit} type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>sign-in</Button> */}
+                {/* <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>Sign in</Button> */}
+                <Button onSubmit={handleOnSubmit} type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>sign-in</Button>
         
                 <Typography >
                      <Link href="#" >

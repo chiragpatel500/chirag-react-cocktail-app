@@ -13,8 +13,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Login from './Login';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-// import { AuthContext } from "../context/authContext";
-// import firebase from "../firebaseConfig.js";
+import { AuthContext } from "../context/authContext";
+import firebase from "../firebaseConfig.js";
 
 
 function Copyright() {
@@ -56,55 +56,55 @@ const useStyles = makeStyles((theme) => ({
 
 function Register() {
   // Firebase start
-  // const db = firebase.firestore();
-  // const [state, setState] = useState({fullname: "",email: "", password: ""});
-  // const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
-  // console.log("in register");
-  // const handleChange = (e) => {
-  //   setState({ ...state, [e.target.name]: e.target.value });
-  // };
-  // console.log(db);
-  // const register = () => {
-  //   firebase
-  //     .auth()
-  //     .createUserWithEmailAndPassword(state.email, state.password)
-  //  fire   .createUserWithEmailAndPassword(state.name, state.email, state.password) fire
-  //     .then((userCredential) => {
-  //       // Signed in
-  //       var user = userCredential.user;
-  //       console.log(user);
-  //       db.collection("users")
-  //         .doc(user.uid)
-  //         .set({
-  //           fullname: state.name,
-  //           email: state.email,
-  //         })
-  //         .then(() => {
-  //           db.collection("users")
-  //             .doc(user.uid)
-  //             .get()
-  //             .then((doc) => {
-  //               console.log(doc.data());
-  //             });
-  //         })
-  //         .catch((error) => {
-  //           console.error("Error writing document: ", error);
-  //         });
-  //     })
-  //     .catch((error) => {
-  //       var errorCode = error.code;
-  //       var errorMessage = error.message;
-  //       console.log(errorMessage);
-  //       setUser(null);
-  //       setIsLoggedIn(false);
-  //       // ..
-  //     });
-  // };
+  const db = firebase.firestore();
+  const [state, setState] = useState({fullName: "", email: "", password: ""});
+  const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  console.log("in register");
+  const handleChange = (e) => {
+    setState({ ...state, [e.target.name]: e.target.value });
+  };
+  console.log(db);
+  const register = () => {
+    firebase
+      .auth()
+      // .createUserWithEmailAndPassword(state.email, state.password)
+    .createUserWithEmailAndPassword(state.email, state.password)
+      .then((userCredential) => {
+        // Signed in
+        var user = userCredential.user;
+        console.log(user);
+        db.collection("users")
+          .doc(user.uid)
+          .set({
+            fullName: state.fullName,
+            email: state.email,
+          })
+          .then(() => {
+            db.collection("users")
+              .doc(user.uid)
+              .get()
+              .then((doc) => {
+                console.log(doc.data());
+              });
+          })
+          .catch((error) => {
+            console.error("Error writing document: ", error);
+          });
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorMessage);
+        setUser(null);
+        setIsLoggedIn(false);
+        // ..
+      });
+  };
 
-  // const handleOnSubmit = (event) => {
-  //   event.preventDefault();
-  //   register();
-  // };
+  const handleOnSubmit = (event) => {
+    event.preventDefault();
+    register();
+  };
   // Firebase end
   
   const classes = useStyles();
@@ -119,22 +119,22 @@ function Register() {
         <Typography component="h1" variant="h5">
           Register
         </Typography>
-        <form className={classes.form} noValidate>
-        {/* <form onSubmit={handleOnSubmit} className={classes.form} noValidate > */}
+        {/* <form className={classes.form} noValidate> */}
+        <form onSubmit={handleOnSubmit} className={classes.form} noValidate >
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
-                autoComplete="name"
-                name="Name"
+                autoComplete="fullname"
+                name="FullName"
                 // fire
-                // onChange={handleChange}
-                // value={state.name}
+                onChange={handleChange}
+                value={state.fullname}
                 // fire
                 variant="outlined"
                 required
                 fullWidth
-                id="name"
-                label="Name"
+                id="fullname"
+                label="FullName"
                 autoFocus
               />
             </Grid>
@@ -147,9 +147,9 @@ function Register() {
                 label="Email Address"
                 name="email"
                 // fire
-                // onChange={handleChange}
-                // value={state.email}
-                // fire
+                onChange={handleChange}
+                value={state.email}
+               // fire
                 autoComplete="email"
               />
             </Grid>
@@ -159,10 +159,10 @@ function Register() {
                 required
                 fullWidth
                 name="password"
-                // fire
-                // onChange={handleChange}
-                // value={state.password}
-                // fire
+              // fire
+                onChange={handleChange}
+                value={state.password}
+               // fire
                 label="Password"
                 type="password"
                 id="password"

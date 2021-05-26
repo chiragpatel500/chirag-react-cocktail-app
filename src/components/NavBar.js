@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useContext } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -10,7 +10,7 @@ import Chat from './Chat';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import ChatIcon from '@material-ui/icons/Chat';
 import { Icon } from '@material-ui/core';
-// import { AuthContext } from "../context/authContext";
+import { AuthContext } from "../context/authContext";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function NavBar() {
-  // const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const classes = useStyles();
 
   return (
@@ -33,15 +33,15 @@ function NavBar() {
         <Toolbar>
           <Button color="inherit">
             <Link to="/Login">Login</Link>
-            {/* {isLoggedIn && <li>LogOut</li>} */}
+            {isLoggedIn && <li>LogOut</li>}
           </Button>
             <Typography variant="h6" className={classes.title} >
                 <Link to="/SearchPage">Buddel Cocktails</Link>
           </Typography>
+          {user && <p>Welcome {user.name}</p>}
           <Button color="inherit">
             <Link to="/Chat">Chat</Link>
           </Button>
-          {/* {user && <p>Welcome {user.name}</p>} */}
         </Toolbar>
       </AppBar>
     </div>

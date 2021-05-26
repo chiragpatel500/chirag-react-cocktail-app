@@ -10,12 +10,12 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Chat from './components/Chat';
 import {CocktailsContextProvider} from './context/cocktailsContext';
 import BottomNav from './components/BottomNav';
-// import { AuthContextProvider } from "./context/authContext";
+import { AuthContextProvider } from "./context/authContext";
 
 function App() {
-  // console.log(process.env.REACT_APP_AUTH_DOMAIN);
+  console.log(process.env.REACT_APP_AUTH_DOMAIN);
   return ( 
-    // <authContextProvider>
+    <authContextProvider>
       <CocktailsContextProvider>
     <Router>
     <div className="App">
@@ -50,7 +50,7 @@ function App() {
       </div>
     </Router>
   </CocktailsContextProvider>
-  // </authContextProvider>
+  </authContextProvider>
   );
 }
 
