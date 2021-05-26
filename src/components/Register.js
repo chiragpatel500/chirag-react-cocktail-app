@@ -53,8 +53,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Register() {
+  
+  
   const classes = useStyles();
-
   return (
    
     <Container component="main" maxWidth="xs" className={classes.main}>

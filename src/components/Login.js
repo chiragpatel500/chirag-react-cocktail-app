@@ -1,12 +1,44 @@
-import React from 'react'
+import React, { useState, useContext } from "react";
 import { Grid,Paper, Avatar, TextField, Button, Typography} from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Register from './Register';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+// import { AuthContext } from "../context/authContext";
+// import firebase from "../firebaseConfig.js";
 
 const Login=()=>{
+    // Firebase code
+    const [state, setState] = useState({ email: "", password: "" });
+    const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+    const handleChange = (e) => {
+      setState({ ...state, [e.target.name]: e.target.value });
+    };
+  
+    const login = () => {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(state.email, state.password)
+        .then((userCredential) => {
+          // Signed in
+          var user = userCredential.user;
+          setUser(user);
+          setIsLoggedIn(true);
+          // ...
+        })
+        .catch((error) => {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          setUser(null);
+          setIsLoggedIn(false);
+        });
+    };
+  
+    const handleOnSubmit = (event) => {
+      event.preventDefault();
+      login();
+    };
 
     
     const paperStyle={padding :20,height:'70vh',width:280, margin:"20px auto", backgroundColor:'violet',}
@@ -21,15 +53,9 @@ const Login=()=>{
                 </Grid>
                 <TextField label='Username' placeholder='Enter username' fullWidth required/>
                 <TextField label='Password' placeholder='Enter password' type='password' fullWidth required/>
-                <FormControlLabel
-                    control={
-                    <Checkbox
-                        name="checkedB"
-                        color="primary"
-                    />
-                    }
-                    label="Remember me"
-                 />
+            
+            <FormControlLabel control={<Checkbox name="checkedB" color="primary"/>} label="Remember me"/>
+                
                 <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>Sign in</Button>
                 <Typography >
                      <Link href="#" >
