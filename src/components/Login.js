@@ -10,35 +10,35 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const Login=()=>{
     // Firebase code
-    const [state, setState] = useState({ email: "", password: "" });
-    const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
-    const handleChange = (e) => {
-      setState({ ...state, [e.target.name]: e.target.value });
-    };
+    // const [state, setState] = useState({ email: "", password: "" });
+    // const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+    // const handleChange = (e) => {
+    //   setState({ ...state, [e.target.name]: e.target.value });
+    // };
   
-    const login = () => {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(state.email, state.password)
-        .then((userCredential) => {
-          // Signed in
-          var user = userCredential.user;
-          setUser(user);
-          setIsLoggedIn(true);
-          // ...
-        })
-        .catch((error) => {
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          setUser(null);
-          setIsLoggedIn(false);
-        });
-    };
+    // const login = () => {
+    //   firebase
+    //     .auth()
+    //     .signInWithEmailAndPassword(state.email, state.password)
+    //     .then((userCredential) => {
+    //       // Signed in
+    //       var user = userCredential.user;
+    //       setUser(user);
+    //       setIsLoggedIn(true);
+    //       // ...
+    //     })
+    //     .catch((error) => {
+    //       var errorCode = error.code;
+    //       var errorMessage = error.message;
+    //       setUser(null);
+    //       setIsLoggedIn(false);
+    //     });
+    // };
   
-    const handleOnSubmit = (event) => {
-      event.preventDefault();
-      login();
-    };
+    // const handleOnSubmit = (event) => {
+    //   event.preventDefault();
+    //   login();
+    // };
 
     
     const paperStyle={padding :20,height:'70vh',width:280, margin:"20px auto", backgroundColor:'violet',}
