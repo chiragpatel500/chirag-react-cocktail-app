@@ -27,7 +27,6 @@ function NavBar() {
   const classes = useStyles();
 
   return (
-
     <div className={classes.root} >
       <AppBar position="static" style={{backgroundColor:'violet'}}>
         <Toolbar>
