@@ -33,6 +33,7 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
   main:{
     backgroundColor:'violet',
+    marginTop:"5%",
   },
   paper: {
     // marginTop: theme.spacing(8),
@@ -85,7 +86,8 @@ function Register() {
               .get()
               .then((doc) => {
                 console.log(doc.data());
-              });
+                setUser(doc.data());
+              })
           })
           .catch((error) => {
             console.error("Error writing document: ", error);
@@ -120,7 +122,7 @@ function Register() {
           Register
         </Typography>
         {/* <form className={classes.form} noValidate> */}
-        <form onSubmit={handleOnSubmit} className={classes.form} noValidate >
+        <form onSubmit={handleOnSubmit} className={classes.form}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField

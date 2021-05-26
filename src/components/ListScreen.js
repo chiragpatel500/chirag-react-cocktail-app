@@ -16,11 +16,11 @@ import {CocktailsContext} from '../context/cocktailsContext';
 
 
 const ListScreen = (props) => { 
-  
   const { cocktails, setCocktails} = useContext(CocktailsContext);
   let {cocktailsName} = useParams();
-const [error, setError] = useState(null)
-const [loading, setLoading] = useState(true)
+
+  const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   const fetchApi = () => {
     const url = "https://cab-cors-anywhere.herokuapp.com/https://www.thecocktaildb.com/api/json/v1/1/search.php?s="+cocktailsName;
@@ -57,6 +57,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor:'violet',
     color:'white',
     margintop:'-20px',
+    paddingBottom:'25px',
   },  
   root: {
       width: "100%",
