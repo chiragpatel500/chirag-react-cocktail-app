@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // import firebase from "../firebaseConfig.js";
 
 const Login=()=>{
-    // Firebase code
+    // Firebase start
     // const [state, setState] = useState({ email: "", password: "" });
     // const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
     // const handleChange = (e) => {
@@ -39,11 +39,13 @@ const Login=()=>{
     //   event.preventDefault();
     //   login();
     // };
+    // Firebase end 
 
     
     const paperStyle={padding :20,height:'70vh',width:280, margin:"20px auto", backgroundColor:'violet',}
     const avatarStyle={backgroundColor:'#1bbd7e'}
     const btnstyle={margin:'8px 0'}
+    
     return(
         <Grid>
             <Paper elevation={10} style={paperStyle}>
@@ -57,6 +59,8 @@ const Login=()=>{
             <FormControlLabel control={<Checkbox name="checkedB" color="primary"/>} label="Remember me"/>
                 
                 <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>Sign in</Button>
+                {/* <Button onSubmit={handleOnSubmit}>sign-in</Button> */}
+        
                 <Typography >
                      <Link href="#" >
                         Forgot password ?

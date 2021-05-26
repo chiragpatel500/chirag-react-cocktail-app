@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useContext } from "react";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,6 +13,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Login from './Login';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+// import { AuthContext } from "../context/authContext";
+// import firebase from "../firebaseConfig.js";
 
 
 function Copyright() {
@@ -53,7 +55,56 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Register() {
-  
+  // Firebase start
+  // const db = firebase.firestore();
+  // const [state, setState] = useState({ email: "", password: "", name: "" });
+  // const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  // console.log("in register");
+  // const handleChange = (e) => {
+  //   setState({ ...state, [e.target.name]: e.target.value });
+  // };
+  // console.log(db);
+  // const register = () => {
+  //   firebase
+  //     .auth()
+  //     .createUserWithEmailAndPassword(state.email, state.password)
+  //     .then((userCredential) => {
+  //       // Signed in
+  //       var user = userCredential.user;
+  //       console.log(user);
+  //       db.collection("users")
+  //         .doc(user.uid)
+  //         .set({
+  //           name: state.name,
+  //           email: state.email,
+  //         })
+  //         .then(() => {
+  //           db.collection("users")
+  //             .doc(user.uid)
+  //             .get()
+  //             .then((doc) => {
+  //               console.log(doc.data());
+  //             });
+  //         })
+  //         .catch((error) => {
+  //           console.error("Error writing document: ", error);
+  //         });
+  //     })
+  //     .catch((error) => {
+  //       var errorCode = error.code;
+  //       var errorMessage = error.message;
+  //       console.log(errorMessage);
+  //       setUser(null);
+  //       setIsLoggedIn(false);
+  //       // ..
+  //     });
+  // };
+
+  // const handleOnSubmit = (event) => {
+  //   event.preventDefault();
+  //   register();
+  // };
+  // Firebase end
   
   const classes = useStyles();
   return (
@@ -68,6 +119,7 @@ function Register() {
           Register
         </Typography>
         <form className={classes.form} noValidate>
+        {/* <form onSubmit={handleOnSubmit}> */}
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
