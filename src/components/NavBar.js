@@ -10,6 +10,7 @@ import Chat from './Chat';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import ChatIcon from '@material-ui/icons/Chat';
 import { Icon } from '@material-ui/core';
+// import { AuthContext } from "../context/authContext";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -22,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function NavBar() {
+  // const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const classes = useStyles();
 
   return (
@@ -31,6 +33,7 @@ function NavBar() {
         <Toolbar>
           <Button color="inherit">
             <Link to="/Login">Login</Link>
+            {/* {isLoggedIn && <li>LogOut</li>} */}
           </Button>
             <Typography variant="h6" className={classes.title} >
                 <Link to="/SearchPage">Buddel Cocktails</Link>
@@ -38,6 +41,7 @@ function NavBar() {
           <Button color="inherit">
             <Link to="/Chat">Chat</Link>
           </Button>
+          {/* {user && <p>Welcome {user.name}</p>} */}
         </Toolbar>
       </AppBar>
     </div>
