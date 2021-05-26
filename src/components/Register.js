@@ -127,10 +127,10 @@ function Register() {
             <Grid item xs={12}>
               <TextField
                 autoComplete="fullname"
-                name="FullName"
+                name="fullName"
                 // fire
                 onChange={handleChange}
-                value={state.fullname}
+                value={state.fullName}
                 // fire
                 variant="outlined"
                 required

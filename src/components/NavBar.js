@@ -32,13 +32,12 @@ function NavBar() {
       <AppBar position="static" style={{backgroundColor:'violet'}}>
         <Toolbar>
           <Button color="inherit">
-            <Link to="/Login">Login</Link>
-            {isLoggedIn && <li>LogOut</li>}
-          </Button>
+            <Link to="/Login">Login</Link>     
+          </Button> 
+          <Link to="/SearchPage">{isLoggedIn && <h6>LogOut</h6>}</Link>
             <Typography variant="h6" className={classes.title} >
                 <Link to="/SearchPage">Buddel Cocktails</Link>
           </Typography>
-          {user && <p>Welcome {user.name}</p>}
           <Button color="inherit">
             <Link to="/Chat">Chat</Link>
           </Button>

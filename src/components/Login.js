@@ -7,17 +7,23 @@ import Register from './Register';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import firebase from "../firebaseConfig.js";
+import { useHistory } from "react-router-dom";
+// import history from '../history';
+import SearchPage from './SearchPage';
 
 const Login=()=>{
     // Firebase start
     const [state, setState] = useState({ email: "", password: "" });
     const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
-    const handleChange = (e) => {
+   
+const handleChange = (e) => {
       setState({ ...state, [e.target.name]: e.target.value });
     };
-  
+  const history = useHistory();
+
     const login = () => {
-      firebase
+      console.log(state.email)
+        firebase
         .auth()
         .signInWithEmailAndPassword(state.email, state.password)
         .then((userCredential) => {
@@ -25,6 +31,8 @@ const Login=()=>{
           var user = userCredential.user;
           setUser(user);
           setIsLoggedIn(true);
+          history.push("/")
+          console.log(user);
           // ...
         })
         .catch((error) => {
@@ -32,8 +40,31 @@ const Login=()=>{
           var errorMessage = error.message;
           setUser(null);
           setIsLoggedIn(false);
+          console.log(error);
         });
     };
+
+    // const logout = () => {
+    //       firebase
+    //       .auth()
+    //       .signInWithEmailAndPassword(state.email, state.password)
+    //       .then((userCredential) => {
+    //         // Sign out 
+    //         var user = userCredential.user;
+    //         setUser(null);
+    //         setIsLoggedIn(false);
+    //         history.push("/")
+    //         // console.log(user);
+    //         // ...
+    //       })
+    //       .catch((error) => {
+    //         var errorCode = error.code;
+    //         var errorMessage = error.message;
+    //         setUser(null);
+    //         setIsLoggedIn(false);
+    //         console.log(error);
+    //       });
+    //   };
   
     const handleOnSubmit = (event) => {
       event.preventDefault();
@@ -53,13 +84,13 @@ const Login=()=>{
                      <Avatar style={avatarStyle}><LockOutlinedIcon/></Avatar>
                     <h2>Log In</h2>
                 </Grid>
-                <TextField label='Email' placeholder='Enter Email' fullWidth required/>
-                <TextField label='Password' placeholder='Enter password' type='password' fullWidth required/>
+                <TextField onChange={handleChange} name='email' label='Email' placeholder='Enter Email' fullWidth required/>
+                <TextField onChange={handleChange} name='password' label='Password' placeholder='Enter password' type='password' fullWidth required/>
             
             <FormControlLabel control={<Checkbox name="checkedB" color="primary"/>} label="Remember me"/>
                 
-                {/* <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>Sign in</Button> */}
-                <Button onSubmit={handleOnSubmit} type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>sign-in</Button>
+                
+                <Button onClick={handleOnSubmit} color='primary' variant="contained" style={btnstyle} fullWidth>sign-in</Button>
         
                 <Typography >
                      <Link href="#" >
