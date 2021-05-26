@@ -5,8 +5,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Register from './Register';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { AuthContext } from "../context/authContext";
-import firebase from "../firebaseConfig.js";
+// import { AuthContext } from "../context/authContext";
+// import firebase from "../firebaseConfig.js";
 
 const Login=()=>{
     // Firebase start
@@ -53,13 +53,13 @@ const Login=()=>{
                      <Avatar style={avatarStyle}><LockOutlinedIcon/></Avatar>
                     <h2>Log In</h2>
                 </Grid>
-                <TextField label='Username' placeholder='Enter username' fullWidth required/>
+                <TextField label='Email' placeholder='Enter Email' fullWidth required/>
                 <TextField label='Password' placeholder='Enter password' type='password' fullWidth required/>
             
             <FormControlLabel control={<Checkbox name="checkedB" color="primary"/>} label="Remember me"/>
                 
                 <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>Sign in</Button>
-                {/* <Button onSubmit={handleOnSubmit}>sign-in</Button> */}
+                {/* <Button onSubmit={handleOnSubmit} type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>sign-in</Button> */}
         
                 <Typography >
                      <Link href="#" >

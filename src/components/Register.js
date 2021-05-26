@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 function Register() {
   // Firebase start
   // const db = firebase.firestore();
-  // const [state, setState] = useState({ email: "", password: "", name: "" });
+  // const [state, setState] = useState({fullname: "",email: "", password: ""});
   // const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   // console.log("in register");
   // const handleChange = (e) => {
@@ -68,6 +68,7 @@ function Register() {
   //   firebase
   //     .auth()
   //     .createUserWithEmailAndPassword(state.email, state.password)
+  //  fire   .createUserWithEmailAndPassword(state.name, state.email, state.password) fire
   //     .then((userCredential) => {
   //       // Signed in
   //       var user = userCredential.user;
@@ -75,7 +76,7 @@ function Register() {
   //       db.collection("users")
   //         .doc(user.uid)
   //         .set({
-  //           name: state.name,
+  //           fullname: state.name,
   //           email: state.email,
   //         })
   //         .then(() => {
@@ -119,29 +120,22 @@ function Register() {
           Register
         </Typography>
         <form className={classes.form} noValidate>
-        {/* <form onSubmit={handleOnSubmit}> */}
+        {/* <form onSubmit={handleOnSubmit} className={classes.form} noValidate > */}
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
-                autoComplete="fname"
-                name="firstName"
+                autoComplete="name"
+                name="Name"
+                // fire
+                // onChange={handleChange}
+                // value={state.name}
+                // fire
                 variant="outlined"
                 required
                 fullWidth
-                id="firstName"
-                label="First Name"
+                id="name"
+                label="Name"
                 autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
               />
             </Grid>
             <Grid item xs={12}>
@@ -152,6 +146,10 @@ function Register() {
                 id="email"
                 label="Email Address"
                 name="email"
+                // fire
+                // onChange={handleChange}
+                // value={state.email}
+                // fire
                 autoComplete="email"
               />
             </Grid>
@@ -161,6 +159,10 @@ function Register() {
                 required
                 fullWidth
                 name="password"
+                // fire
+                // onChange={handleChange}
+                // value={state.password}
+                // fire
                 label="Password"
                 type="password"
                 id="password"
