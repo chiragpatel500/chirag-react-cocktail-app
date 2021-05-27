@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -6,11 +6,12 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Login from './Login';
 import SearchPage from './SearchPage';
-import Chat from './Chat';
+import Favorites from './Favorites';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import ChatIcon from '@material-ui/icons/Chat';
 import { Icon } from '@material-ui/core';
 import { AuthContext } from "../context/authContext";
+import firebase from "../firebaseConfig.js";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -24,6 +25,24 @@ const useStyles = makeStyles((theme) => ({
 
 function NavBar() {
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  
+  const checkIfLoggedIn = () => {
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        //signed in.
+        console.log(user);
+        setUser(user);
+      } else {
+        // No user is signed in.
+        console.log("Not signed in")
+      }
+    });
+  };
+  useEffect(() => {
+    checkIfLoggedIn();
+  }, []);
+  
+  
   const classes = useStyles();
 
   return (
@@ -37,8 +56,9 @@ function NavBar() {
             <Typography variant="h6" className={classes.title} >
                 <Link to="/SearchPage">Buddel Cocktails</Link>
           </Typography>
+          {/* {user && <p>Welcome {user.name}</p>} */}
           <Button color="inherit">
-            <Link to="/Chat">Chat</Link>
+            <Link to="/Favorites">Favorites</Link>
           </Button>
         </Toolbar>
       </AppBar>

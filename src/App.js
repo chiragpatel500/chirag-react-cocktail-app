@@ -7,10 +7,10 @@ import Details from './components/Details';
 import Register from './components/Register';
 import Login from './components/Login';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Chat from './components/Chat';
 import {CocktailsContextProvider} from './context/cocktailsContext';
 import BottomNav from './components/BottomNav';
 import { AuthContextProvider } from "./context/authContext";
+import Favorites from './components/Favorites';
 
 function App() {
   console.log(process.env.REACT_APP_AUTH_DOMAIN);
@@ -30,8 +30,8 @@ function App() {
           <Route exact path="/SearchPage">
         <SearchPage/>
           </Route>
-          <Route exact path="/Chat">
-            <Chat/>
+          <Route exact path="/Favorites">
+            <Favorites/>
           </Route>
           <Route exact path="/Register">
             <Register />

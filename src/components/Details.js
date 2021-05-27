@@ -1,3 +1,4 @@
+import React, { useState, useEffect, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -11,14 +12,13 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Box from '@material-ui/core/Box';
 import Listscreen from './ListScreen';
 import { BrowserRouter as Router, Switch, Route, Link, useParams } from "react-router-dom";
 import {CocktailsContext} from '../context/cocktailsContext';
-import React, { useState, useEffect, useContext } from 'react';
+import { AuthContext } from "../context/authContext";
+import firebase from "../firebaseConfig.js";
 
 const useStyles = makeStyles((theme) => ({
  main:{
@@ -63,6 +63,27 @@ useEffect(() => {
   findCocktail();
 },[]);
 
+
+const db = firebase.firestore();
+  const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+
+  const {Cocktails } = useParams();
+  console.log(cocktails);
+  const addFavorite = () => {
+    var userDocument = db.collection("Cocktails").doc(user.uid);
+    userDocument
+      .update({
+        favorites: firebase.firestore.FieldValue.arrayUnion(cocktails),
+      })
+      .then(() => {
+        console.log("Document successfully updated!");
+      })
+      .catch((error) => {
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
+      });
+  };
+
   return (
   <div className={classes.main}>
 {selectedCocktail != null &&  (
@@ -87,6 +108,12 @@ useEffect(() => {
     {selectedCocktail.strInstructions}
     </Typography>
   </CardContent>
+  <CardActions>
+      <IconButton aria-label="add to favorites">
+          <FavoriteIcon  onClick={() => addFavorite()} />
+      </IconButton>
+  </CardActions>
+
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUISDO05e3kmEAQNLEbkK_dYlF2G_Dbk3nJw&usqp=CAU" alt="" />
 </Card>
 </Box>
