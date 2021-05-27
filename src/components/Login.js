@@ -10,6 +10,7 @@ import firebase from "../firebaseConfig.js";
 import { useHistory } from "react-router-dom";
 // import history from '../history';
 import SearchPage from './SearchPage';
+// import { getAuth, signOut } from "firebase/auth";
 
 const Login=()=>{
     // Firebase start
@@ -44,27 +45,19 @@ const handleChange = (e) => {
         });
     };
 
-    // const logout = () => {
-    //       firebase
-    //       .auth()
-    //       .signInWithEmailAndPassword(state.email, state.password)
-    //       .then((userCredential) => {
-    //         // Sign out 
-    //         var user = userCredential.user;
-    //         setUser(null);
-    //         setIsLoggedIn(false);
-    //         history.push("/")
-    //         // console.log(user);
-    //         // ...
-    //       })
-    //       .catch((error) => {
-    //         var errorCode = error.code;
-    //         var errorMessage = error.message;
-    //         setUser(null);
-    //         setIsLoggedIn(false);
-    //         console.log(error);
-    //       });
-    //   };
+            const signOut =()=>{
+              firebase
+              .auth()
+              .signOut()
+              .then((userCredential) => {
+              console.log("you are signed out")
+            })
+            .catch((error) => {
+              console.log("oops ")
+            });
+            };
+              
+
   
     const handleOnSubmit = (event) => {
       event.preventDefault();
