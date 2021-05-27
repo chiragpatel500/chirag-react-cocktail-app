@@ -52,7 +52,10 @@ function NavBar() {
           <Button color="inherit">
             <Link to="/Login">Login</Link>     
           </Button> 
-          <Link to="/SearchPage">{isLoggedIn && <h6>LogOut</h6>}</Link>
+          <Link to="/SearchPage">
+            {isLoggedIn && <h6>LogOut</h6>}
+          {/* {isLoggedIn ? 'Logout' : 'Login'} */}
+          </Link>
             <Typography variant="h6" className={classes.title} >
                 <Link to="/SearchPage">Buddel Cocktails</Link>
           </Typography>

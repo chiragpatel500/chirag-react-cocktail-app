@@ -31,7 +31,7 @@ const handleChange = (e) => {
           var user = userCredential.user;
           setUser(user);
           setIsLoggedIn(true);
-          history.push("/")
+          history.push("/Searchpage")
           console.log(user);
           // ...
         })
