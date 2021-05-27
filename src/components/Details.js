@@ -6,13 +6,11 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Box from '@material-ui/core/Box';
 import Listscreen from './ListScreen';
 import { BrowserRouter as Router, Switch, Route, Link, useParams } from "react-router-dom";
@@ -34,10 +32,6 @@ const useStyles = makeStyles((theme) => ({
     height: 0,
     paddingTop: '56.25%', // 16:9
   },
- 
-  // avatar: {
-  //   backgroundColor: red[500],
-  // },
 }));
 
 function Details() {
@@ -65,15 +59,16 @@ useEffect(() => {
 
 
 const db = firebase.firestore();
-  const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
 
-  const {Cocktails } = useParams();
-  console.log(cocktails);
+  // const {Cocktails } = useParams();
+  // console.log(cocktails);
   const addFavorite = () => {
-    var userDocument = db.collection("Cocktails").doc(user.uid);
+    console.log("hello");
+    var userDocument = db.collection("users").doc(user.uid);
     userDocument
       .update({
-        favorites: firebase.firestore.FieldValue.arrayUnion(cocktails),
+        favorites: firebase.firestore.FieldValue.arrayUnion(selectedCocktail),
       })
       .then(() => {
         console.log("Document successfully updated!");
@@ -124,10 +119,3 @@ const db = firebase.firestore();
 
 export default Details;
 
-// Deatails
-// deatils 1 shows name = "strDrink": "Margarita",
-// details 2 shows picture = "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg",
-// detail 3 shows cetgory = "strCategory": "Ordinary Drink",
-// detail 4 shows type = "strAlcoholic": "Alcoholic",
-// detail 5 shows glass type ="Cocktail glass",
-// deatils 6 shows making process = "strInstructions":"In a mixing glass half-filled with crushed ice",

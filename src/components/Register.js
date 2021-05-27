@@ -56,15 +56,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Register() {
+  const [error, setError] = useState(null);
   // Firebase start
   const db = firebase.firestore();
   const [state, setState] = useState({fullName: "", email: "", password: ""});
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   console.log("in register");
+  
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
   console.log(db);
+  
   const register = () => {
     firebase
       .auth()
@@ -79,6 +82,7 @@ function Register() {
           .set({
             fullName: state.fullName,
             email: state.email,
+            favorites:[],
           })
           .then(() => {
             db.collection("users")
@@ -98,6 +102,7 @@ function Register() {
         var errorMessage = error.message;
         console.log(errorMessage);
         setUser(null);
+        setError(error.message);
         setIsLoggedIn(false);
         // ..
       });
@@ -187,6 +192,9 @@ function Register() {
           >
             Register
           </Button>
+          {
+          error && <p>{error}</p>
+        }
           <Grid container justify="center">
             <Grid item>
               <Link to="/Login" variant="body2">

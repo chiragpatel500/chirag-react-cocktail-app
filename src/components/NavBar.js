@@ -12,6 +12,7 @@ import ChatIcon from '@material-ui/icons/Chat';
 import { Icon } from '@material-ui/core';
 import { AuthContext } from "../context/authContext";
 import firebase from "../firebaseConfig.js";
+import { useHistory } from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -41,7 +42,23 @@ function NavBar() {
   useEffect(() => {
     checkIfLoggedIn();
   }, []);
+
+  const history = useHistory();
   
+  const signOut =()=>{
+    firebase
+    .auth()
+    .signOut()
+    .then(() => {
+     setIsLoggedIn(false)
+     setUser(null) 
+    history.push("/Searchpage")
+    console.log("you are signed out")
+  })
+  .catch((error) => {
+    console.log("oops ")
+  });
+  };
   
   const classes = useStyles();
 
@@ -52,10 +69,10 @@ function NavBar() {
           <Button color="inherit">
             <Link to="/Login">Login</Link>     
           </Button> 
-          <Link to="/SearchPage">
-            {isLoggedIn && <h6>LogOut</h6>}
-          {/* {isLoggedIn ? 'Logout' : 'Login'} */}
-          </Link>
+          {/* <Link to="/SearchPage"> */}
+            {isLoggedIn && <Button color="inherit" onClick={signOut}>LogOut</Button>}
+      
+          {/* </Link> */}
             <Typography variant="h6" className={classes.title} >
                 <Link to="/SearchPage">Buddel Cocktails</Link>
           </Typography>

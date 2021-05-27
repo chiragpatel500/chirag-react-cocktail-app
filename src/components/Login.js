@@ -8,14 +8,14 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import firebase from "../firebaseConfig.js";
 import { useHistory } from "react-router-dom";
-// import history from '../history';
 import SearchPage from './SearchPage';
-// import { getAuth, signOut } from "firebase/auth";
+
 
 const Login=()=>{
     // Firebase start
     const [state, setState] = useState({ email: "", password: "" });
     const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+   const [error, setError] = useState(null);
    
 const handleChange = (e) => {
       setState({ ...state, [e.target.name]: e.target.value });
@@ -41,6 +41,7 @@ const handleChange = (e) => {
           var errorMessage = error.message;
           setUser(null);
           setIsLoggedIn(false);
+          setError(error.message);
           console.log(error);
         });
     };
@@ -49,7 +50,7 @@ const handleChange = (e) => {
               firebase
               .auth()
               .signOut()
-              .then((userCredential) => {
+              .then(() => {
               console.log("you are signed out")
             })
             .catch((error) => {
@@ -84,7 +85,9 @@ const handleChange = (e) => {
                 
                 
                 <Button onClick={handleOnSubmit} color='primary' variant="contained" style={btnstyle} fullWidth>sign-in</Button>
-        
+        {
+          error && <p>{error}</p>
+        }
                 <Typography >
                      <Link href="#" >
                         Forgot password ?

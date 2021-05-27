@@ -41,7 +41,6 @@ const ListScreen = (props) => {
             if(data.drinks === null){
               setError('Sorry, this drink is not available')
             }else{
-
               setCocktails(data.drinks);
             }
        
@@ -73,7 +72,9 @@ const useStyles = makeStyles((theme) => ({
       alignItems: "center",
     }
   })); 
+
 const classes = useStyles();  
+
   return (
     <div className={classes.main}>
     <Box display="flex" flexDirection="column" alignItems="center">
