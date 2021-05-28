@@ -1,19 +1,18 @@
 import React, { useState, useEffect, useContext } from "react";
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Login from './Login';
-import SearchPage from './SearchPage';
-import Favorites from './Favorites';
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import Login from "./Login";
+import SearchPage from "./SearchPage";
+import Favorites from "./Favorites";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import ChatIcon from '@material-ui/icons/Chat';
-import { Icon } from '@material-ui/core';
+import ChatIcon from "@material-ui/icons/Chat";
+import { Icon } from "@material-ui/core";
 import { AuthContext } from "../context/authContext";
 import firebase from "../firebaseConfig.js";
 import { useHistory } from "react-router-dom";
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,10 +32,10 @@ function NavBar() {
         //signed in.
         console.log(user);
         setUser(user);
-        setIsLoggedIn(true)
+        setIsLoggedIn(true);
       } else {
         // No user is signed in.
-        console.log("Not signed in")
+        console.log("Not signed in");
       }
     });
   };
@@ -51,36 +50,39 @@ function NavBar() {
       .auth()
       .signOut()
       .then(() => {
-        setIsLoggedIn(false)
-        setUser(null)
-        history.push("/Searchpage")
-        console.log("you are signed out")
+        setIsLoggedIn(false);
+        setUser(null);
+        history.push("/Searchpage");
+        console.log("you are signed out");
       })
       .catch((error) => {
-        console.log("oops ")
+        console.log("oops ");
       });
   };
 
   const classes = useStyles();
 
   return (
-    <div className={classes.root} >
-      <AppBar position="static" style={{ backgroundColor: 'violet' }}>
+    <div className={classes.root}>
+      <AppBar position="static" style={{ backgroundColor: "violet" }}>
         <Toolbar>
-          {/* <Button color="inherit">
-            <Link to="/Login">Login</Link>     
-          </Button>  */}
-          {/* <Link to="/SearchPage"> */}
-          {isLoggedIn && <Button color="inherit" onClick={signOut}>LogOut</Button>}
+          {isLoggedIn && (
+            <Button color="inherit" onClick={signOut}>
+              LogOut
+            </Button>
+          )}
 
-          {/* </Link> */}
-          <Typography variant="h6" className={classes.title} >
+          <Typography variant="h6" className={classes.title}>
             <Link to="/SearchPage">Buddel Cocktails</Link>
           </Typography>
-          {/* {user && <p>Welcome {user.name}</p>} */}
+
           <Button color="inherit">
             {/* <Link to="/Favorites">Favorites</Link> */}
-            {isLoggedIn ? <Link to="/Favorites">Favorites</Link> : <Link to="/Login">Login </Link>}
+            {isLoggedIn ? (
+              <Link to="/Favorites">Favorites</Link>
+            ) : (
+              <Link to="/Login">Login </Link>
+            )}
           </Button>
         </Toolbar>
       </AppBar>

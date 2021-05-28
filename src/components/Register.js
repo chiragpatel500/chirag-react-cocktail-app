@@ -1,53 +1,52 @@
 import React, { useState, useContext } from "react";
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Login from './Login';
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+import Login from "./Login";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import firebase from "../firebaseConfig.js";
 
-
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
+      {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
         Your Website
-      </Link>{' '}
+      </Link>{" "}
       {new Date().getFullYear()}
-      {'.'}
+      {"."}
     </Typography>
   );
 }
 
 const useStyles = makeStyles((theme) => ({
-  main:{
-    backgroundColor:'violet',
-    marginTop:"5%",
+  main: {
+    backgroundColor: "violet",
+    marginTop: "5%",
   },
   paper: {
     // marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    backgroundColor:'violet',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    backgroundColor: "violet",
   },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(3),
   },
   submit: {
@@ -59,20 +58,20 @@ function Register() {
   const [error, setError] = useState(null);
   // Firebase start
   const db = firebase.firestore();
-  const [state, setState] = useState({fullName: "", email: "", password: ""});
+  const [state, setState] = useState({ fullName: "", email: "", password: "" });
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   console.log("in register");
-  
+
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
   console.log(db);
-  
+
   const register = () => {
     firebase
       .auth()
       // .createUserWithEmailAndPassword(state.email, state.password)
-    .createUserWithEmailAndPassword(state.email, state.password)
+      .createUserWithEmailAndPassword(state.email, state.password)
       .then((userCredential) => {
         // Signed in
         var user = userCredential.user;
@@ -82,7 +81,7 @@ function Register() {
           .set({
             fullName: state.fullName,
             email: state.email,
-            favorites:[],
+            favorites: [],
           })
           .then(() => {
             db.collection("users")
@@ -91,7 +90,7 @@ function Register() {
               .then((doc) => {
                 console.log(doc.data());
                 setUser(doc.data());
-              })
+              });
           })
           .catch((error) => {
             console.error("Error writing document: ", error);
@@ -113,10 +112,9 @@ function Register() {
     register();
   };
   // Firebase end
-  
+
   const classes = useStyles();
   return (
-   
     <Container component="main" maxWidth="xs" className={classes.main}>
       <CssBaseline />
       <div className={classes.paper}>
@@ -156,7 +154,7 @@ function Register() {
                 // fire
                 onChange={handleChange}
                 value={state.email}
-               // fire
+                // fire
                 autoComplete="email"
               />
             </Grid>
@@ -166,10 +164,10 @@ function Register() {
                 required
                 fullWidth
                 name="password"
-              // fire
+                // fire
                 onChange={handleChange}
                 value={state.password}
-               // fire
+                // fire
                 label="Password"
                 type="password"
                 id="password"
@@ -192,9 +190,7 @@ function Register() {
           >
             Register
           </Button>
-          {
-          error && <p>{error}</p>
-        }
+          {error && <p>{error}</p>}
           <Grid container justify="center">
             <Grid item>
               <Link to="/Login" variant="body2">
@@ -208,7 +204,6 @@ function Register() {
         <Copyright />
       </Box>
     </Container>
-
   );
 }
 export default Register;
