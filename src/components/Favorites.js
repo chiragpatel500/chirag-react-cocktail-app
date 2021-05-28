@@ -34,10 +34,10 @@ import { AuthContext } from "../context/authContext";
 // const classes = useStyles();  
 
 function Favorites() {
-    const [selectedfav, setSelectedfav] = useState(true);
-    
-    const [error, setError] = useState(null)
-    const [loading, setLoading] = useState(true)
+  // const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  const [selectedfav, setSelectedfav] = useState(true);
+  const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(true)
 
        const db = firebase.firestore();
           const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
