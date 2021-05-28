@@ -16,77 +16,81 @@ import "firebase/firestore";
 import { doc, getDoc } from "firebase/firestore";
 import { AuthContext } from "../context/authContext";
 
-// const useStyles = makeStyles((theme) => ({
-//   main:{
-//    backgroundColor:'violet',
-//    margintop: '-20px',
-//   },
-//    root: {
-//      maxWidth: 345,
-//      backgroundColor:'violet',
-//      color:'white',
-//    },
-//    media: {
-//      height: 0,
-//      paddingTop: '56.25%', // 16:9
-//    },
-//  }));
-// const classes = useStyles();  
+const useStyles = makeStyles((theme) => ({
+  main: {
+    backgroundColor: 'violet',
+    margintop: '-20px',
+  },
+  root: {
+    maxWidth: 345,
+    backgroundColor: 'violet',
+    color: 'white',
+  },
+  media: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+  },
+}));
+
 
 function Favorites() {
   // const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
-  const [selectedfav, setSelectedfav] = useState(true);
+  const [favorites, setFavorites] = useState();
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(true)
 
-       const db = firebase.firestore();
-          const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
-           console.log(user);                                                       
-                const myfav= async()=>{
-                         const docRef = await db.collection("users")
-                                      .doc(user.uid)
-                                            .get()                          
-                                              console.log(docRef.data());                                   
-                                      const selectedfav = docRef.data().Favorites;
-                                        console.log(selectedfav);
-                                  };
+  const db = firebase.firestore();
+  const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  console.log(user);
+  const myfav = async () => {
+    const docRef = await db.collection("users")
+      .doc(user.uid)
+      .get()
+    console.log(docRef.data());
 
-                                  useEffect(() => {
-                                    myfav();
-                                  }, []);                               
-  
-                              return(
-                                <div>
-                                <p>my favorites</p>
-                                    {/* <div className={classes.main}>
-                                      <Box display="flex" flexDirection="column" alignItems="center">
-                                        Favorites.map((selectedfav) => {
-                                         return (
-                                         <Card className={classes.root}>
-                                           <CardHeader
-                                             avatar={
-                                               <Avatar aria-label={selectedfav.strDrinkThumb} className={classes.avatar}>
-                                                 {selectedfav.strDrinkThumb}
-                                               </Avatar>
-                                             }
-                                             title={selectedfav.strDrink}
-                                           />
-                                           <CardMedia
-                                             className={classes.media}
-                                             image={selectedfav.strDrinkThumb}
-                                            />
-                                           <CardContent>
-                                             <Typography variant="body2" color="textSecondary" component="p">
-                                               <h5>Type of glass :{selectedfav.strGlass}</h5>
-                                               <h4>Instructions for making this Cocktail</h4>
-                                               {selectedfav.strInstructions}
-                                             </Typography>
-                                           </CardContent>
-                                         </Card>
-                                       )})
-                                    </Box> 
-                                </div>        */}
-                           </div> )
+    setFavorites(docRef.data().favorites)
+  };
+
+  useEffect(() => {
+    if (user)
+      myfav();
+  }, [user]);
+  const classes = useStyles();
+  return (
+    <div>
+      <p>my favorites</p>
+      <div className={classes.main}>
+        <Box display="flex" flexDirection="column" alignItems="center">
+          {favorites ? favorites.map((favorite) => {
+            return (
+              <Card className={classes.root}>
+                <CardHeader
+                  avatar={
+                    <Avatar aria-label={favorite.strDrinkThumb} className={classes.avatar}>
+                      {favorite.strDrinkThumb}
+                    </Avatar>
+                  }
+                  title={favorite.strDrink}
+                />
+                <CardMedia
+                  className={classes.media}
+                  image={favorite.strDrinkThumb}
+                />
+                <CardContent>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                    <h5>Type of glass :{favorite.strGlass}</h5>
+                    <h4>Instructions for making this Cocktail</h4>
+                    {favorite.strInstructions}
+                  </Typography>
+                </CardContent>
+              </Card>
+            )
+          }) : (
+            <p>No favorites selected so far</p>
+          )}
+        </Box>
+      </div>
+    </div>)
 };
 
 export default Favorites;

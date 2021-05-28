@@ -17,7 +17,7 @@ import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,    
+    flexGrow: 1,
   },
   title: {
     flexGrow: 1,
@@ -26,13 +26,14 @@ const useStyles = makeStyles((theme) => ({
 
 function NavBar() {
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
-  
+
   const checkIfLoggedIn = () => {
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         //signed in.
         console.log(user);
         setUser(user);
+        setIsLoggedIn(true)
       } else {
         // No user is signed in.
         console.log("Not signed in")
@@ -44,41 +45,42 @@ function NavBar() {
   }, []);
 
   const history = useHistory();
-  
-  const signOut =()=>{
+
+  const signOut = () => {
     firebase
-    .auth()
-    .signOut()
-    .then(() => {
-     setIsLoggedIn(false)
-     setUser(null) 
-    history.push("/Searchpage")
-    console.log("you are signed out")
-  })
-  .catch((error) => {
-    console.log("oops ")
-  });
+      .auth()
+      .signOut()
+      .then(() => {
+        setIsLoggedIn(false)
+        setUser(null)
+        history.push("/Searchpage")
+        console.log("you are signed out")
+      })
+      .catch((error) => {
+        console.log("oops ")
+      });
   };
-  
+
   const classes = useStyles();
 
   return (
     <div className={classes.root} >
-      <AppBar position="static" style={{backgroundColor:'violet'}}>
+      <AppBar position="static" style={{ backgroundColor: 'violet' }}>
         <Toolbar>
-          <Button color="inherit">
+          {/* <Button color="inherit">
             <Link to="/Login">Login</Link>     
-          </Button> 
+          </Button>  */}
           {/* <Link to="/SearchPage"> */}
-            {isLoggedIn && <Button color="inherit" onClick={signOut}>LogOut</Button>}
-      
+          {isLoggedIn && <Button color="inherit" onClick={signOut}>LogOut</Button>}
+
           {/* </Link> */}
-            <Typography variant="h6" className={classes.title} >
-                <Link to="/SearchPage">Buddel Cocktails</Link>
+          <Typography variant="h6" className={classes.title} >
+            <Link to="/SearchPage">Buddel Cocktails</Link>
           </Typography>
           {/* {user && <p>Welcome {user.name}</p>} */}
           <Button color="inherit">
-            <Link to="/Favorites">Favorites</Link>
+            {/* <Link to="/Favorites">Favorites</Link> */}
+            {isLoggedIn ? <Link to="/Favorites">Favorites</Link> : <Link to="/Login">Login </Link>}
           </Button>
         </Toolbar>
       </AppBar>
