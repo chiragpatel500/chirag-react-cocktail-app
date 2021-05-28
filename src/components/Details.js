@@ -43,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Details() {
+  const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const classes = useStyles();
   const { cocktails, setCocktails } = useContext(CocktailsContext);
 
@@ -64,10 +65,11 @@ function Details() {
   useEffect(() => {
     findCocktail();
   }, []);
+  const history = useHistory();
 
   const db = firebase.firestore();
-  const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
-  const history = useHistory();
+  
+
   const addFavorite = () => {
     console.log("hello");
     if (user) {
