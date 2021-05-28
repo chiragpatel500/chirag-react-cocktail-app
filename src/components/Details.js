@@ -123,10 +123,10 @@ function Details() {
               </IconButton>
             </CardActions>
 
-            <img
+            {/* <img
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUISDO05e3kmEAQNLEbkK_dYlF2G_Dbk3nJw&usqp=CAU"
               alt=""
-            />
+            /> */}
           </Card>
         </Box>
       )}
