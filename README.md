@@ -1,3 +1,12 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/aa1a4d6b-72da-4207-8efc-f1bfa2b747cd/deploy-status)](https://app.netlify.com/sites/chirag-react-cocktail-app/deploys)
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
