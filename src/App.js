@@ -1,5 +1,5 @@
+// import React,{ useState, useEffect } from 'react';
 import React from 'react';
-// { useState, useEffect }
 import './App.css';
 import SearchPage from './components/SearchPage';
 import NavBar from './components/NavBar';
