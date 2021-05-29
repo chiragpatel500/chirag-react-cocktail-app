@@ -1,24 +1,21 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import RestoreIcon from '@material-ui/icons/Restore';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import BottomNavigation from "@material-ui/core/BottomNavigation";
+import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
+import RestoreIcon from "@material-ui/icons/Restore";
 // import FavoriteIcon from '@material-ui/icons/Favorite';
 // import LocationOnIcon from '@material-ui/icons/LocationOn';
-import history from '../history';
-
+import history from "../history";
 
 const useStyles = makeStyles({
   root: {
-   
-    backgroundColor:'violet',
-    display:'flex',
-    flexDirection:'row',
-    alignItems:'center',
-    position: 'fixed',
-    width: '100%',
+    backgroundColor: "violet",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    position: "fixed",
+    width: "100%",
     bottom: 0,
-    
   },
 });
 

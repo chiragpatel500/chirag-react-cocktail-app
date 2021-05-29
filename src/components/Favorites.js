@@ -43,7 +43,6 @@ function Favorites() {
   const myfav = async () => {
     const docRef = await db.collection("users").doc(user.uid).get();
     console.log(docRef.data());
-
     setFavorites(docRef.data().favorites);
   };
 
