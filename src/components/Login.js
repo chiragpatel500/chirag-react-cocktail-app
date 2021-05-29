@@ -70,17 +70,18 @@ const Login = () => {
 
   const paperStyle = {
     padding: 20,
-    height: "100%",
+    height: "70vh",
     width: 280,
-    margin: "20px auto",
+    margin: "auto",
+    // margintop: "10%",
     backgroundColor: "violet",
   };
   const avatarStyle = { backgroundColor: "#1bbd7e" };
   const btnstyle = { margin: "8px 0" };
 
   return (
-    <Grid>
-      <Paper elevation={10} style={paperStyle}>
+    <Paper elevation={10} style={paperStyle}>
+      <Grid>
         <Grid align="center">
           <Avatar style={avatarStyle}>
             <LockOutlinedIcon />
@@ -105,10 +106,10 @@ const Login = () => {
           required
         />
 
-        <FormControlLabel
+        {/* <FormControlLabel
           control={<Checkbox name="checkedB" color="primary" />}
           label="Remember me"
-        />
+        /> */}
 
         <Button
           onClick={handleOnSubmit}
@@ -120,15 +121,15 @@ const Login = () => {
           sign-in
         </Button>
         {error && <p>{error}</p>}
-        <Typography>
+        {/* <Typography>
           <Link href="#">Forgot password ?</Link>
-        </Typography>
+        </Typography> */}
         <Typography>
           {" "}
           Do you have an account ?<Link to="/Register">Register Now</Link>
         </Typography>
-      </Paper>
-    </Grid>
+      </Grid>
+    </Paper>
   );
 };
 
