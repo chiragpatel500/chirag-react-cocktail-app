@@ -15,7 +15,7 @@ import {
   Link,
   useParams,
 } from "react-router-dom";
-import Details from "./Details";
+// import Details from "./Details";
 import { CocktailsContext } from "../context/cocktailsContext";
 
 const ListScreen = (props) => {

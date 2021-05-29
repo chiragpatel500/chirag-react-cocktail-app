@@ -64,6 +64,7 @@ function Details() {
   useEffect(() => {
     findCocktail();
   }, []);
+  
   const history = useHistory();
 
   const db = firebase.firestore();
