@@ -74,8 +74,8 @@ const Login = () => {
     alignItems: "center",
     padding: 20,
     height: "70vh",
-    // width: 280,
-    width: "100%",
+    width: 280,
+    // width: "100%",
     margin:"auto",
     backgroundColor: "violet",
   };
