@@ -35,7 +35,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "5%",
   },
   paper: {
-    // marginTop: theme.spacing(8),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -46,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: "100%",
     marginTop: theme.spacing(3),
   },
   submit: {
@@ -70,7 +69,6 @@ function Register() {
   const register = () => {
     firebase
       .auth()
-      // .createUserWithEmailAndPassword(state.email, state.password)
       .createUserWithEmailAndPassword(state.email, state.password)
       .then((userCredential) => {
         // Signed in
@@ -124,7 +122,6 @@ function Register() {
         <Typography component="h1" variant="h5">
           Register
         </Typography>
-        {/* <form className={classes.form} noValidate> */}
         <form onSubmit={handleOnSubmit} className={classes.form}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
