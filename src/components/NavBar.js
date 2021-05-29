@@ -4,12 +4,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-// import Login from "./Login";
-// import SearchPage from "./SearchPage";
-// import Favorites from "./Favorites";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-// import ChatIcon from "@material-ui/icons/Chat";
-// import { Icon } from "@material-ui/core";
 import { AuthContext } from "../context/authContext";
 import firebase from "../firebaseConfig.js";
 import { useHistory } from "react-router-dom";
@@ -77,7 +72,6 @@ function NavBar() {
           </Typography>
 
           <Button color="inherit">
-            {/* <Link to="/Favorites">Favorites</Link> */}
             {isLoggedIn ? (
               <Link to="/Favorites">Favorites</Link>
             ) : (

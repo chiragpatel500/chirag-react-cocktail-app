@@ -8,10 +8,8 @@ import CardActions from "@material-ui/core/CardActions";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-// import { red } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import Box from "@material-ui/core/Box";
-// import Listscreen from "./ListScreen";
 import {
   BrowserRouter as Router,
   Switch,
