@@ -69,9 +69,13 @@ const Login = () => {
   // Firebase end
 
   const paperStyle = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
     padding: 20,
     height: "70vh",
-    width: 280,
+    // width: 280,
+    width: "100%",
     margin:"auto",
     backgroundColor: "violet",
   };
@@ -79,8 +83,8 @@ const Login = () => {
   const btnstyle = { margin: "8px 0" };
 
   return (
+    <Grid>
     <Paper elevation={10} style={paperStyle}>
-      <Grid>
         <Grid align="center">
           <Avatar style={avatarStyle}>
             <LockOutlinedIcon />
@@ -127,8 +131,8 @@ const Login = () => {
           {" "}
           Do you have an account ?<Link to="/Register">Register Now</Link>
         </Typography>
-      </Grid>
-    </Paper>
+      </Paper>
+    </Grid>
   );
 };
 
