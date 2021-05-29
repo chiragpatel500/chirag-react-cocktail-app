@@ -70,7 +70,7 @@ const Login = () => {
 
   const paperStyle = {
     padding: 20,
-    height: "70vh",
+    height: "100vh",
     width: 280,
     margin: "20px auto",
     backgroundColor: "violet",
