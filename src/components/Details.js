@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-// import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -13,8 +12,14 @@ import Typography from "@material-ui/core/Typography";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import Box from "@material-ui/core/Box";
 // import Listscreen from "./ListScreen";
-// import { BrowserRouter as Router, Switch, Route, Link, useParams } from "react-router-dom";
-import { BrowserRouter as useParams } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams,
+} from "react-router-dom";
+
 import { CocktailsContext } from "../context/cocktailsContext";
 import { AuthContext } from "../context/authContext";
 import firebase from "../firebaseConfig.js";
@@ -39,9 +44,6 @@ const useStyles = makeStyles((theme) => ({
 
 function Details() {
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
-
-
-  const classes = useStyles();
   const { cocktails, setCocktails } = useContext(CocktailsContext);
 
   let { drinkId } = useParams();
@@ -65,7 +67,6 @@ function Details() {
   const history = useHistory();
 
   const db = firebase.firestore();
-  
 
   const addFavorite = () => {
     console.log("hello");
@@ -86,6 +87,7 @@ function Details() {
       history.push("/Login");
     }
   };
+  const classes = useStyles();
 
   return (
     <div className={classes.main}>
