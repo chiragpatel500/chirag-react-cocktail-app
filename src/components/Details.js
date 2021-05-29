@@ -39,6 +39,8 @@ const useStyles = makeStyles((theme) => ({
 
 function Details() {
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+
+
   const classes = useStyles();
   const { cocktails, setCocktails } = useContext(CocktailsContext);
 
