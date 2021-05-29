@@ -52,25 +52,25 @@ function Favorites() {
 
   const removeFavorite = () => {
     console.log("selected your favorite will be removed");
-    if (user) {
-      var userDocument = db.collection("users").doc(user.uid);
-      userDocument
-        .update({
-          favorites: firebase.firestore.FieldValue.arrayUnion(Favorites),
-        })
-        .then(() => {
-          console.log("Document successfully updated!");
-        })
-        .catch((error) => {
-          // The document probably doesn't exist.
-          console.error("Error updating document: ", error);
-        });
-    }
+    // if (user) {
+    //   var userDocument = db.collection("users").doc(user.uid);
+    //   userDocument
+    //     .update({
+    //       favorites: firebase.firestore.FieldValue.arrayUnion(Favorites),
+    //     })
+    //     .then(() => {
+    //       console.log("Document successfully updated!");
+    //     })
+    //     .catch((error) => {
+    //       // The document probably doesn't exist.
+    //       console.error("Error updating document: ", error);
+    //     });
+    // }
   };
   const classes = useStyles();
   return (
     <div>
-      <p>My Favorite cocktails </p>
+      <p>My Favorite Cocktails </p>
       <div className={classes.main}>
         <Box display="flex" flexDirection="column" alignItems="center">
           {favorites ? (
