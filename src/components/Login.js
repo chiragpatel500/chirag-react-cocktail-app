@@ -72,8 +72,8 @@ const Login = () => {
     padding: 20,
     height: "70vh",
     width: 280,
-    margin: "auto",
-    // margintop: "10%",
+    margin:"auto",
+    // margintop:"20px",
     backgroundColor: "violet",
   };
   const avatarStyle = { backgroundColor: "#1bbd7e" };
