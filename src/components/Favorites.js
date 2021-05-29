@@ -5,6 +5,9 @@ import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
+import CardActions from "@material-ui/core/CardActions";
+import IconButton from "@material-ui/core/IconButton";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
@@ -36,6 +39,7 @@ function Favorites() {
   const db = firebase.firestore();
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   console.log(user);
+
   const myfav = async () => {
     const docRef = await db.collection("users").doc(user.uid).get();
     console.log(docRef.data());
@@ -45,6 +49,24 @@ function Favorites() {
   useEffect(() => {
     if (user) myfav();
   }, [user]);
+
+  const removeFavorite = () => {
+    console.log("selected your favorite will be removed");
+    if (user) {
+      var userDocument = db.collection("users").doc(user.uid);
+      userDocument
+        .update({
+          favorites: firebase.firestore.FieldValue.arrayUnion(Favorites),
+        })
+        .then(() => {
+          console.log("Document successfully updated!");
+        })
+        .catch((error) => {
+          // The document probably doesn't exist.
+          console.error("Error updating document: ", error);
+        });
+    }
+  };
   const classes = useStyles();
   return (
     <div>
@@ -81,6 +103,13 @@ function Favorites() {
                       {favorite.strInstructions}
                     </Typography>
                   </CardContent>
+                  <CardActions>
+                    <IconButton aria-label="remove favorite">
+                      <p>
+                        Remove <FavoriteIcon onClick={() => removeFavorite()} />
+                      </p>
+                    </IconButton>
+                  </CardActions>
                 </Card>
               );
             })
