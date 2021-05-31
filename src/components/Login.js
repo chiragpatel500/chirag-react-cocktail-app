@@ -83,61 +83,62 @@ const Login = () => {
     flexDirection: "column",
     alignItems: "center",
     width: "100%",
-    paddingBottom:20,
+    paddingBottom: 20,
+    height:"100vh",
   };
 
   return (
     <form style={fomstyle}>
-    <Grid>
-      <Paper elevation={10} style={paperStyle}>
-        <Grid align="center">
-          <Avatar style={avatarStyle}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <h2>Log In</h2>
-        </Grid>
-        <TextField
-          onChange={handleChange}
-          name="email"
-          label="Email"
-          placeholder="Enter Email"
-          fullWidth
-          required
-        />
-        <TextField
-          onChange={handleChange}
-          name="password"
-          label="Password"
-          placeholder="Enter password"
-          type="password"
-          fullWidth
-          required
-        />
+      <Grid>
+        <Paper elevation={10} style={paperStyle}>
+          <Grid align="center">
+            <Avatar style={avatarStyle}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <h2>Log In</h2>
+          </Grid>
+          <TextField
+            onChange={handleChange}
+            name="email"
+            label="Email"
+            placeholder="Enter Email"
+            fullWidth
+            required
+          />
+          <TextField
+            onChange={handleChange}
+            name="password"
+            label="Password"
+            placeholder="Enter password"
+            type="password"
+            fullWidth
+            required
+          />
 
-        {/* <FormControlLabel
+          {/* <FormControlLabel
           control={<Checkbox name="checkedB" color="primary" />}
           label="Remember me"
         /> */}
 
-        <Button
-          onClick={handleOnSubmit}
-          color="primary"
-          variant="contained"
-          style={btnstyle}
-          fullWidth
-        >
-          sign-in
+          <Button
+            onClick={handleOnSubmit}
+            color="primary"
+            variant="contained"
+            style={btnstyle}
+            fullWidth
+          >
+            sign-in
         </Button>
-        {error && <p>{error}</p>}
-        {/* <Typography>
+          {error && <p>{error}</p>}
+          {/* <Typography>
           <Link href="#">Forgot password ?</Link>
         </Typography> */}
-        <Typography>
-          {" "}
+          <Typography>
+            {" "}
           Do you have an account ?<Link to="/Register">Register Now</Link>
-        </Typography>
-      </Paper>
-    </Grid>
+          </Typography>
+        </Paper>
+      </Grid>
     </form >
   );
 };
