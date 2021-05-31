@@ -48,22 +48,35 @@ function Favorites() {
     if (user) myfav();
   }, [user]);
 
-  const removeFavorite = () => {
+  const removeFavorite = (idDrink) => {
     console.log("selected your favorite will be removed");
-    // if (user) {
-    //   var userDocument = db.collection("users").doc(user.uid);
-    //   userDocument
-    //     .remove({
-    //       favorites: firebase.firestore.FieldValue.arrayUnion(Favorites),
-    //     })
-    //     .then(() => {
-    //       console.log("Document successfully removed ");
-    //     })
-    //     .catch((error) => {
-    //       // The document probably doesn't exist.
-    //       console.error("Error updating document: ", error);
-    //     });
-    // }
+    console.log(idDrink);
+    if (user) {
+      var userDocument = db.collection("users").doc(user.uid);
+      userDocument.get().then((doc) => {
+        if (doc.exists) {
+          console.log("Document data:", doc.data());
+          const newFav = doc.data().favorites.filter(favorite => {
+            return idDrink != favorite.idDrink
+          });
+          console.log(newFav);
+          userDocument.update({ favorites: newFav })
+            .then(() => {
+              console.log("document updated")
+              myfav();
+
+            })
+            .catch((error) => {
+              console.log("Error getting document:", error);
+            });   
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+        }
+      }).catch((error) => {
+        console.log("Error getting document:", error);
+      });
+    }
   };
   const classes = useStyles();
 
@@ -104,7 +117,7 @@ function Favorites() {
                   </CardContent>
                   <CardActions>
                     <IconButton aria-label="remove favorites">
-                      <FavoriteIcon onClick={() => removeFavorite()} />
+                      <FavoriteIcon onClick={() => removeFavorite(favorite.idDrink)} />
                     </IconButton>
                   </CardActions>
                 </Card>
