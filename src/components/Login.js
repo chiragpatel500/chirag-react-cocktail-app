@@ -73,7 +73,7 @@ const Login = () => {
 
   const paperStyle = {
     padding: 20,
-    height: "90vh",
+    height: "70vh",
     width: 280,
     backgroundColor: "violet",
   };
