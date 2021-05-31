@@ -1,5 +1,6 @@
 // 1. import the modules
 import React, { createContext, useState } from "react";
+
 // 2. initialize the context
 const initAuthContext = {
   user: null,
