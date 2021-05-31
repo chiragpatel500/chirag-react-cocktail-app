@@ -83,7 +83,7 @@ const Login = () => {
     flexDirection: "column",
     alignItems: "center",
     width: "100%",
-    paddingBottom: 20,
+    // paddingBottom: 20,
     height:"100vh",
   };
 
