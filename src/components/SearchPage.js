@@ -33,6 +33,7 @@ function SearchPage() {
   const classes = useStyles();
   const [searchKey, setSearchKey] = useState("");
   const history = useHistory();
+
   const SearchFunction = (ev) => {
     setSearchKey(ev.target.value);
   };
@@ -65,14 +66,19 @@ function SearchPage() {
             }}
             variant="outlined"
           />
-          <Link to={`/ListScreen/${searchKey}`}>
+          {searchKey == "" ? <Button
+            variant="contained"
+            color="primary"
+            className={classes.button}
+            endIcon={<Icon>send</Icon>}
+          ></Button> : <Link to={`/ListScreen/${searchKey}`}>
             <Button
               variant="contained"
               color="primary"
               className={classes.button}
               endIcon={<Icon>send</Icon>}
             ></Button>
-          </Link>
+          </Link>}
         </div>
         <div>
           <img

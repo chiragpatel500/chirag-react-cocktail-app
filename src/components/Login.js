@@ -116,10 +116,10 @@ const Login = () => {
             required
           />
 
-          {/* <FormControlLabel
+          <FormControlLabel
           control={<Checkbox name="checkedB" color="primary" />}
           label="Remember me"
-        /> */}
+        />
 
           <Button
             onClick={handleOnSubmit}
@@ -131,9 +131,9 @@ const Login = () => {
             sign-in
         </Button>
           {error && <p>{error}</p>}
-          {/* <Typography>
+          <Typography>
           <Link href="#">Forgot password ?</Link>
-        </Typography> */}
+        </Typography>
           <Typography>
             {" "}
           Do you have an account ?<Link to="/Register">Register Now</Link>
