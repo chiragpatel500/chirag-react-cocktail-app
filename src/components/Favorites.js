@@ -33,8 +33,6 @@ const useStyles = makeStyles((theme) => ({
 
 function Favorites() {
   const [favorites, setFavorites] = useState();
-  // const [error, setError] = useState(null);
-  // const [loading, setLoading] = useState(true);
 
   const db = firebase.firestore();
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
@@ -55,11 +53,11 @@ function Favorites() {
     // if (user) {
     //   var userDocument = db.collection("users").doc(user.uid);
     //   userDocument
-    //     .update({
+    //     .remove({
     //       favorites: firebase.firestore.FieldValue.arrayUnion(Favorites),
     //     })
     //     .then(() => {
-    //       console.log("Document successfully updated!");
+    //       console.log("Document successfully removed ");
     //     })
     //     .catch((error) => {
     //       // The document probably doesn't exist.
@@ -68,6 +66,7 @@ function Favorites() {
     // }
   };
   const classes = useStyles();
+
   return (
     <div>
       <p>My Favorite Cocktails </p>
@@ -104,10 +103,8 @@ function Favorites() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <IconButton aria-label="remove favorite">
-                      <p>
-                        Remove <FavoriteIcon onClick={() => removeFavorite()} />
-                      </p>
+                    <IconButton aria-label="remove favorites">
+                      <FavoriteIcon onClick={() => removeFavorite()} />
                     </IconButton>
                   </CardActions>
                 </Card>
