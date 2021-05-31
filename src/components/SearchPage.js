@@ -4,6 +4,7 @@ import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   main: {
@@ -31,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 function SearchPage() {
   const classes = useStyles();
   const [searchKey, setSearchKey] = useState("");
-
+  const history = useHistory();
   const SearchFunction = (ev) => {
     setSearchKey(ev.target.value);
   };
