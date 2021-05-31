@@ -69,7 +69,7 @@ const Login = () => {
   // Firebase end
 
   const paperStyle = {
-    padding: 20,
+    // padding: 20,
     height: "70vh",
     width: 280,
     backgroundColor: "violet",
