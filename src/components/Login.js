@@ -8,12 +8,15 @@ import {
   Typography,
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import firebase from "../firebaseConfig.js";
 import { useHistory } from "react-router-dom";
+
+
+
+
 
 const Login = () => {
   // Firebase start
@@ -70,21 +73,19 @@ const Login = () => {
 
   const paperStyle = {
     padding: 20,
-    height: "50vh",
+    height: "90vh",
     width: 280,
     backgroundColor: "violet",
   };
   const avatarStyle = { backgroundColor: "#1bbd7e" };
   const btnstyle = { margin: "8px 0" };
-
   const fomstyle = {
     marginTop: "5%",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     width: "100%",
-    marginBottom: "5%",
-    height: "100%",
+    // height: "100%",
     backgroundColor: "violet",
   };
 
