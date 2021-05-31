@@ -84,7 +84,7 @@ const Login = () => {
     alignItems: "center",
     width: "100%",
     // paddingBottom: 20,
-    height:"100vh",
+    height:"100%",
   };
 
   return (
