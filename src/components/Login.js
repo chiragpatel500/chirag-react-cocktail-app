@@ -69,7 +69,7 @@ const Login = () => {
   // Firebase end
 
   const paperStyle = {
-    // padding: 20,
+    padding: 20,
     height: "70vh",
     width: 280,
     backgroundColor: "violet",
@@ -84,7 +84,8 @@ const Login = () => {
     alignItems: "center",
     width: "100%",
     // paddingBottom: 20,
-    height:"100%",
+    height: "100%",
+    backgroundColor: "violet",
   };
 
   return (
