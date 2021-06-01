@@ -117,10 +117,12 @@ function Details() {
               </Typography>
             </CardContent>
             <CardActions>
+
               <IconButton aria-label="add to favorites">
-                Click <FavoriteIcon onClick={() => addFavorite()} />
+                Click
+                <FavoriteIcon onClick={() => addFavorite()} />
                 Favorite
-              </IconButton>
+                </IconButton>
             </CardActions>
             <img
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUISDO05e3kmEAQNLEbkK_dYlF2G_Dbk3nJw&usqp=CAU"
