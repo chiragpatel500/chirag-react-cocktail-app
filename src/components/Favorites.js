@@ -31,9 +31,9 @@ const useStyles = makeStyles((theme) => ({
     height: 0,
     paddingTop: "56.25%",
   },
-  button: {
-    marginBottom: "20px",
-  },
+  // button: {
+  //   marginBottom: "20px",
+  // },
 
 }));
 
