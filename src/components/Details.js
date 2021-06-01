@@ -43,10 +43,9 @@ const useStyles = makeStyles((theme) => ({
 function Details() {
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const { cocktails, setCocktails } = useContext(CocktailsContext);
-
+  const history = useHistory();
   let { drinkId } = useParams();
   console.log(drinkId);
-
   const [selectedCocktail, setSelectedCocktail] = useState(null);
   console.log(cocktails);
 
@@ -63,10 +62,7 @@ function Details() {
     findCocktail();
   }, []);
 
-  const history = useHistory();
-
   const db = firebase.firestore();
-
   const addFavorite = () => {
     console.log("hello");
     if (user) {

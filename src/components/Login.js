@@ -14,10 +14,6 @@ import { AuthContext } from "../context/authContext";
 import firebase from "../firebaseConfig.js";
 import { useHistory } from "react-router-dom";
 
-
-
-
-
 const Login = () => {
   // Firebase start
   const [state, setState] = useState({ email: "", password: "" });
@@ -130,18 +126,18 @@ const Login = () => {
             fullWidth
           >
             sign-in
-        </Button>
+          </Button>
           {error && <p>{error}</p>}
           {/* <Typography>
           <Link href="#">Forgot password ?</Link>
         </Typography> */}
           <Typography>
             {" "}
-          Do you have an account ?<Link to="/Register">Register Now</Link>
+            Do you have an account ?<Link to="/Register">Register Now</Link>
           </Typography>
         </Paper>
       </Grid>
-    </form >
+    </form>
   );
 };
 

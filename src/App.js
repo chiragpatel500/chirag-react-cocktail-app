@@ -14,6 +14,7 @@ import Favorites from "./components/Favorites";
 
 function App() {
   console.log(process.env.REACT_APP_AUTH_DOMAIN);
+  
   return (
     <AuthContextProvider>
       <CocktailsContextProvider>

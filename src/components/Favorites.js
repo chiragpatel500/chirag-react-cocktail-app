@@ -81,6 +81,7 @@ function Favorites() {
         });
     }
   };
+  
   const classes = useStyles();
 
   return (
@@ -120,9 +121,9 @@ function Favorites() {
                   </CardContent>
                   <CardActions>
                     <IconButton aria-label="remove favorites">
-                      Delete <FavoriteIcon
+                      Click <FavoriteIcon
                         onClick={() => removeFavorite(favorite.idDrink)}
-                      />
+                      /> To Delete
                     </IconButton>
                   </CardActions>
                 </Card>
