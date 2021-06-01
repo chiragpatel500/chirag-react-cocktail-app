@@ -103,7 +103,7 @@ function Favorites() {
             favorites.map((favorite) => {
               return (
                 <Card className={classes.root}>
-                  <CardHeader 
+                  <CardHeader
                     avatar={
                       <Avatar
                         aria-label={favorite.strDrinkThumb}
