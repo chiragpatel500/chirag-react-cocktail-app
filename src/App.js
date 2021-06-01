@@ -16,7 +16,7 @@ function App() {
   console.log(process.env.REACT_APP_AUTH_DOMAIN);
   
   return (
-    <AuthContextProvider>
+    <AuthContextProvider> 
       <CocktailsContextProvider>
         <Router>
           <div className="App">

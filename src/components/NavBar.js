@@ -1,3 +1,4 @@
+// imports
 import React, { useState, useEffect, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -9,6 +10,7 @@ import { AuthContext } from "../context/authContext";
 import firebase from "../firebaseConfig.js";
 import { useHistory } from "react-router-dom";
 
+// Css
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -18,9 +20,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// Navigation bar function with navigation to login/out and FAVORITES
 function NavBar() {
+  const classes = useStyles();
+  const history = useHistory();
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
 
+    // the login function to check if user is checked in or not 
   const checkIfLoggedIn = () => {
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
@@ -38,8 +44,7 @@ function NavBar() {
     checkIfLoggedIn();
   }, []);
 
-  const history = useHistory();
-
+  // Log out function to log out the user.
   const signOut = () => {
     firebase
       .auth()
@@ -55,12 +60,12 @@ function NavBar() {
       });
   };
 
-  const classes = useStyles();
-
+// return
   return (
     <div className={classes.root}>
       <AppBar position="static" style={{ backgroundColor: "violet" }}>
         <Toolbar>
+          {/* only If, the user is loggedin it will display logout */}
           {isLoggedIn && (
             <Button color="inherit" onClick={signOut}>
               LogOut
@@ -72,6 +77,7 @@ function NavBar() {
           </Typography>
 
           <Button color="inherit">
+            {/* if loggedin is true then it will display FAVORITES else The login button */}
             {isLoggedIn ? (
               <Link to="/Favorites">Favorites</Link>
             ) : (
