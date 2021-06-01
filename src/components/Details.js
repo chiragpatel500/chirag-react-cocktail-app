@@ -1,3 +1,4 @@
+// imports
 import React, { useState, useEffect, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -17,12 +18,12 @@ import {
   Link,
   useParams,
 } from "react-router-dom";
-
 import { CocktailsContext } from "../context/cocktailsContext";
 import { AuthContext } from "../context/authContext";
 import firebase from "../firebaseConfig.js";
 import { useHistory } from "react-router-dom";
 
+// Css
 const useStyles = makeStyles((theme) => ({
   main: {
     backgroundColor: "violet",
@@ -40,7 +41,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// Details Page
 function Details() {
+  const classes = useStyles();
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const { cocktails, setCocktails } = useContext(CocktailsContext);
   const history = useHistory();
@@ -49,6 +52,7 @@ function Details() {
   const [selectedCocktail, setSelectedCocktail] = useState(null);
   console.log(cocktails);
 
+  // Filtering the cocktail per id
   const findCocktail = () => {
     const selectedCocktail = cocktails.filter((cocktail) => {
       console.log(cocktail.idDrink);
@@ -62,6 +66,7 @@ function Details() {
     findCocktail();
   }, []);
 
+  // saving the favorite in the firebase database
   const db = firebase.firestore();
   const addFavorite = () => {
     console.log("hello");
@@ -82,8 +87,8 @@ function Details() {
       history.push("/Login");
     }
   };
-  const classes = useStyles();
 
+  // return
   return (
     <div className={classes.main}>
       {selectedCocktail != null && (
@@ -116,7 +121,6 @@ function Details() {
                 <FavoriteIcon onClick={() => addFavorite()} />
               </IconButton>
             </CardActions>
-
             <img
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUISDO05e3kmEAQNLEbkK_dYlF2G_Dbk3nJw&usqp=CAU"
               alt=""

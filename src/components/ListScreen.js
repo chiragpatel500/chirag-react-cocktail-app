@@ -18,7 +18,7 @@ import {
 } from "react-router-dom";
 import { CocktailsContext } from "../context/cocktailsContext";
 
-// Css 
+// Css
 const useStyles = makeStyles((theme) => ({
   main: {
     backgroundColor: "violet",
@@ -41,17 +41,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-// ListScreen page 
+// ListScreen page
 const ListScreen = () => {
   const classes = useStyles();
   const { cocktails, setCocktails } = useContext(CocktailsContext);
   let { cocktailsName } = useParams();
-
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // fetching the data from api url with authentication 
+  // fetching the data from API url with authentication
   const fetchApi = () => {
     const url =
       "https://cab-cors-anywhere.herokuapp.com/https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" +
@@ -82,7 +80,7 @@ const ListScreen = () => {
     fetchApi();
   }, []);
 
-
+  // return
   return (
     <div className={classes.main}>
       <Box display="flex" flexDirection="column" alignItems="center">
@@ -126,10 +124,9 @@ const ListScreen = () => {
         ) : (
           <p>{error}</p>
         )}
-
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUISDO05e3kmEAQNLEbkK_dYlF2G_Dbk3nJw&usqp=CAU"
-          alt=""
+          alt="buddel Cocktails"
         />
       </Box>
     </div>

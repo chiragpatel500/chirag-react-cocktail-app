@@ -1,3 +1,4 @@
+// imports
 import firebase from "firebase/app";
 import React, { useState, useEffect, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
@@ -15,6 +16,7 @@ import "firebase/auth";
 import "firebase/firestore";
 import { AuthContext } from "../context/authContext";
 
+// Css
 const useStyles = makeStyles((theme) => ({
   main: {
     backgroundColor: "violet",
@@ -29,15 +31,22 @@ const useStyles = makeStyles((theme) => ({
     height: 0,
     paddingTop: "56.25%",
   },
+  button: {
+    marginBottom: "20px",
+  },
+
 }));
 
+// Displaying favorites from firebase database with option to delete a particular cocktail
 function Favorites() {
+  const classes = useStyles();
   const [favorites, setFavorites] = useState();
 
   const db = firebase.firestore();
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   console.log(user);
 
+  // Extracting favorites from the Firebase Database to render in return 
   const myfav = async () => {
     const docRef = await db.collection("users").doc(user.uid).get();
     console.log(docRef.data());
@@ -48,6 +57,7 @@ function Favorites() {
     if (user) myfav();
   }, [user]);
 
+  // removing a particular favorite from the page as well the firebase database
   const removeFavorite = (idDrink) => {
     console.log("selected your favorite will be removed");
     console.log(idDrink);
@@ -72,7 +82,7 @@ function Favorites() {
                 console.log("Error getting document:", error);
               });
           } else {
-            // doc.data() will be undefined in this case
+
             console.log("No such document!");
           }
         })
@@ -81,9 +91,9 @@ function Favorites() {
         });
     }
   };
-  
-  const classes = useStyles();
 
+
+  // return
   return (
     <div>
       <p>My Favorite Cocktails </p>
@@ -93,7 +103,7 @@ function Favorites() {
             favorites.map((favorite) => {
               return (
                 <Card className={classes.root}>
-                  <CardHeader
+                  <CardHeader 
                     avatar={
                       <Avatar
                         aria-label={favorite.strDrinkThumb}
@@ -119,7 +129,7 @@ function Favorites() {
                       {favorite.strInstructions}
                     </Typography>
                   </CardContent>
-                  <CardActions>
+                  <CardActions className={classes.button}>
                     <IconButton aria-label="remove favorites">
                       Click <FavoriteIcon
                         onClick={() => removeFavorite(favorite.idDrink)}
@@ -129,9 +139,8 @@ function Favorites() {
                 </Card>
               );
             })
-          ) : (
-            <p>No favorites selected so far</p>
-          )}
+          ) : ("No Fvaorites Selected so far")
+          }
         </Box>
       </div>
     </div>
