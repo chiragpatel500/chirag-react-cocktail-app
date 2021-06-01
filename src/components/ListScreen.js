@@ -1,3 +1,4 @@
+// imports
 import React, { useState, useEffect, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
@@ -17,13 +18,40 @@ import {
 } from "react-router-dom";
 import { CocktailsContext } from "../context/cocktailsContext";
 
-const ListScreen = (props) => {
+// Css 
+const useStyles = makeStyles((theme) => ({
+  main: {
+    backgroundColor: "violet",
+    color: "white",
+    margintop: "-20px",
+    paddingBottom: "25px",
+  },
+  root: {
+    width: "100%",
+    maxWidth: "30ch",
+    // backgroundColor: theme.palette.background.paper,
+  },
+  inline: {
+    display: "inline",
+  },
+  flexcenter: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+}));
+
+
+// ListScreen page 
+const ListScreen = () => {
+  const classes = useStyles();
   const { cocktails, setCocktails } = useContext(CocktailsContext);
   let { cocktailsName } = useParams();
 
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // fetching the data from api url with authentication 
   const fetchApi = () => {
     const url =
       "https://cab-cors-anywhere.herokuapp.com/https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" +
@@ -54,29 +82,6 @@ const ListScreen = (props) => {
     fetchApi();
   }, []);
 
-  const useStyles = makeStyles((theme) => ({
-    main: {
-      backgroundColor: "violet",
-      color: "white",
-      margintop: "-20px",
-      paddingBottom: "25px",
-    },
-    root: {
-      width: "100%",
-      maxWidth: "30ch",
-      // backgroundColor: theme.palette.background.paper,
-    },
-    inline: {
-      display: "inline",
-    },
-    flexcenter: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-    },
-  }));
-
-  const classes = useStyles();
 
   return (
     <div className={classes.main}>
