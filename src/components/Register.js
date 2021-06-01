@@ -16,19 +16,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import firebase from "../firebaseConfig.js";
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Buddel Cocktails 
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
+// Css
 const useStyles = makeStyles((theme) => ({
   main: {
     backgroundColor: "violet",
@@ -53,8 +41,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// Copyright 
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {"Copyright © Buddel Cocktails Berlin"}
+      <Link color="inherit" href="https://chirag-react-cocktail-app.netlify.app/">
+        Buddel Cocktails Berlin
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  );
+}
+
+
+// Registration page with Firebase authentication and storing the user data in the firebase database
 function Register() {
+  const classes = useStyles();
   const [error, setError] = useState(null);
+
   // Firebase start
   const db = firebase.firestore();
   const [state, setState] = useState({ fullName: "", email: "", password: "" });
@@ -66,6 +72,7 @@ function Register() {
   };
   console.log(db);
 
+  // Register function which sends the user input data to the firebase 
   const register = () => {
     firebase
       .auth()
@@ -104,14 +111,14 @@ function Register() {
         // ..
       });
   };
-
+  // submit data to the register function
   const handleOnSubmit = (event) => {
     event.preventDefault();
     register();
   };
   // Firebase end
 
-  const classes = useStyles();
+  // return
   return (
     <Container component="main" maxWidth="xs" className={classes.main}>
       <CssBaseline />

@@ -139,7 +139,7 @@ function Favorites() {
                 </Card>
               );
             })
-          ) : ("No Fvaorites Selected so far")
+          ) : ("No Favorites Selected so far")
           }
         </Box>
       </div>

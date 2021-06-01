@@ -1,3 +1,4 @@
+// imports
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
@@ -5,6 +6,7 @@ import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import RestoreIcon from "@material-ui/icons/Restore";
 import history from "../history";
 
+// Css
 const useStyles = makeStyles({
   root: {
     backgroundColor: "violet",
@@ -17,10 +19,13 @@ const useStyles = makeStyles({
   },
 });
 
+
+// Bottom navigation button to return to previous page
 export default function SimpleBottomNavigation() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
+  // Return
   return (
     <BottomNavigation
       value={value}

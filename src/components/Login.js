@@ -1,3 +1,4 @@
+// Imports
 import React, { useState, useContext } from "react";
 import {
   Grid,
@@ -14,7 +15,9 @@ import { AuthContext } from "../context/authContext";
 import firebase from "../firebaseConfig.js";
 import { useHistory } from "react-router-dom";
 
+// Login Page with Login and Logout Functions using the firebase authentication.
 const Login = () => {
+  const history = useHistory();
   // Firebase start
   const [state, setState] = useState({ email: "", password: "" });
   const { user, setUser, isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
@@ -23,8 +26,8 @@ const Login = () => {
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
-  const history = useHistory();
 
+  // Login function with firebase autentication to login the user. 
   const login = () => {
     console.log(state.email);
     firebase
@@ -49,6 +52,7 @@ const Login = () => {
       });
   };
 
+  // Logout function using foresbase authentication.
   const signOut = () => {
     firebase
       .auth()
@@ -67,6 +71,8 @@ const Login = () => {
   };
   // Firebase end
 
+
+  // Css
   const paperStyle = {
     padding: 20,
     height: "70vh",
@@ -85,6 +91,7 @@ const Login = () => {
     backgroundColor: "violet",
   };
 
+  // return
   return (
     <form style={fomstyle}>
       <Grid>
@@ -112,12 +119,10 @@ const Login = () => {
             fullWidth
             required
           />
-
           {/* <FormControlLabel
           control={<Checkbox name="checkedB" color="primary" />}
           label="Remember me"
         /> */}
-
           <Button
             onClick={handleOnSubmit}
             color="primary"
@@ -132,7 +137,7 @@ const Login = () => {
           <Link href="#">Forgot password ?</Link>
         </Typography> */}
           <Typography>
-            {" "}
+            {/* {" "} */}
             Do you have an account ?<Link to="/Register">Register Now</Link>
           </Typography>
         </Paper>

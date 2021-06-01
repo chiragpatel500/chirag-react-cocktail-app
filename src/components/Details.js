@@ -118,7 +118,8 @@ function Details() {
             </CardContent>
             <CardActions>
               <IconButton aria-label="add to favorites">
-                <FavoriteIcon onClick={() => addFavorite()} />
+                Click <FavoriteIcon onClick={() => addFavorite()} />
+                Favorite
               </IconButton>
             </CardActions>
             <img
