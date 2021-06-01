@@ -124,10 +124,12 @@ function Details() {
                 Favorite
                 </IconButton>
             </CardActions>
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUISDO05e3kmEAQNLEbkK_dYlF2G_Dbk3nJw&usqp=CAU"
-              alt=""
-            />
+            <div>
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUISDO05e3kmEAQNLEbkK_dYlF2G_Dbk3nJw&usqp=CAU"
+                alt="buddel cocktail"
+              />
+            </div>
           </Card>
         </Box>
       )}
